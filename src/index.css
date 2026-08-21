@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Baloo 2", "Segoe UI", Roboto, sans-serif;
+
+  /* Brand green scale */
+  --color-brand-50: #eef8ee;
+  --color-brand-100: #d7eed8;
+  --color-brand-200: #b0ddb3;
+  --color-brand-300: #82c687;
+  --color-brand-400: #56ab5e;
+  --color-brand-500: #368a40;
+  --color-brand-600: #256b30;
+  --color-brand-700: #1f5729;
+  --color-brand-800: #1a4522;
+  --color-brand-900: #123018;
+  --color-brand-950: #0b1f10;
+
+  /* Status colors — always paired with icon/text, never color-only */
+  --color-status-normal: #1f7a3d;
+  --color-status-normal-bg: #e5f5e8;
+  --color-status-atencao: #8a6400;
+  --color-status-atencao-bg: #fbf0d0;
+  --color-status-alerta: #a34a00;
+  --color-status-alerta-bg: #fbe4cf;
+  --color-status-emergencia: #a3241f;
+  --color-status-emergencia-bg: #fbdad8;
+
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-scale-in: scale-in 0.15s ease-out;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.97) translateY(4px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+}
+
+:root {
+  --font-scale: 1;
+  color-scheme: light;
+}
+
+html {
+  font-size: calc(16px * var(--font-scale));
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f4f9f4;
+  color: #17301c;
+}
+
+/* High contrast mode */
+:root[data-contrast="high"] {
+  --color-brand-500: #1c6b28;
+  --color-brand-600: #0f4a1c;
+}
+
+:root[data-contrast="high"] body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+:root[data-contrast="high"] .surface {
+  border-width: 2px !important;
+  border-color: #000000 !important;
+}
+
+:root[data-contrast="high"] .text-muted {
+  color: #1a1a1a !important;
+}
+
+/* Focus visibility for keyboard users */
+:focus-visible {
+  outline: 3px solid #14532d;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+:root[data-contrast="high"] :focus-visible {
+  outline: 4px solid #000000;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 100;
+  background: #123018;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+* {
+  scrollbar-color: var(--color-brand-400) transparent;
+}
