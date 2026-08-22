@@ -56,7 +56,7 @@ const QUESTIONS: CannedQuestion[] = [
     opcoes: [
       { label: "Nenhum", to: "/noticias" },
       { label: "Básico", to: "/" },
-      { label: "Avançado", to: "/gestor" },
+      { label: "Avançado", to: "/central-dados" },
     ],
   },
 ];

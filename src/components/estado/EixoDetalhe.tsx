@@ -3,7 +3,7 @@ import { getAvaliacaoByEstado } from "../../data/avaliacaoClimatica";
 import { agruparAvaliacaoPorEixo, NIVEL_SEMAFORO_META, nivelFromPontuacao } from "../../lib/avaliacaoClimatica";
 import type { EixoAvaliacaoClimatica } from "../../types";
 import { EmptyState } from "../ui/States";
-import { EstagioDistribuicao } from "../gestor/EstagioDistribuicao";
+import { EstagioDistribuicao } from "../centralDeDados/EstagioDistribuicao";
 
 /** Real assessment data (audit-sourced) currently only covers Bahia. */
 export function EixoDetalhe({ uf, eixo }: { uf: string; eixo: EixoAvaliacaoClimatica }) {

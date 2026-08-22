@@ -13,7 +13,7 @@ import Comunidade from "./pages/Comunidade";
 import Relatos from "./pages/Relatos";
 import Educacao from "./pages/Educacao";
 import EducacaoDetalhe from "./pages/EducacaoDetalhe";
-import Gestor from "./pages/Gestor";
+import CentralDeDados from "./pages/CentralDeDados";
 import NotFound from "./pages/NotFound";
 
 function ScrollToTop() {
@@ -40,7 +40,7 @@ export default function App() {
           <Route path="/relatos" element={<Relatos />} />
           <Route path="/educacao" element={<Educacao />} />
           <Route path="/educacao/:id" element={<EducacaoDetalhe />} />
-          <Route path="/gestor" element={<Gestor />} />
+          <Route path="/central-dados" element={<CentralDeDados />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

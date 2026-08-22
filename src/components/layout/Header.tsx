@@ -9,7 +9,7 @@ const NAV_ITEMS = [
   { to: "/comunidade", label: "Comunidade" },
   { to: "/relatos", label: "Relatos" },
   { to: "/educacao", label: "Educação" },
-  { to: "/gestor", label: "Central de Dados" },
+  { to: "/central-dados", label: "Central de Dados" },
 ];
 
 export function Header() {
