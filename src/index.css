@@ -1,10 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-heading: "Baloo 2", "Segoe UI", Roboto, sans-serif;
+  /* Public Sans — chosen for this project because it's purpose-built for civic/
+     government data products (US Web Design System), not a generic marketing
+     typeface: strong numeral support, tall x-height for legibility at small
+     sizes, and a wide weight range for a real type scale. One family, used
+     deliberately at different weights, rather than mixing several fonts. */
+  --font-sans: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  /* Brand green scale */
+  /* Brand green scale — used deliberately (primary actions, active/selected
+     states, key data), not as a page-wide surface color. */
   --color-brand-50: #eef8ee;
   --color-brand-100: #d7eed8;
   --color-brand-200: #b0ddb3;
@@ -17,18 +23,87 @@
   --color-brand-900: #123018;
   --color-brand-950: #0b1f10;
 
-  /* Status colors — always paired with icon/text, never color-only */
-  --color-status-normal: #1f7a3d;
-  --color-status-normal-bg: #e5f5e8;
-  --color-status-atencao: #8a6400;
-  --color-status-atencao-bg: #fbf0d0;
-  --color-status-alerta: #a34a00;
-  --color-status-alerta-bg: #fbe4cf;
+  /* Neutral scale — cool, faintly green-tinted grays for text/borders/surfaces,
+     so the whole UI has one consistent gray ramp instead of scattered hexes. */
+  --color-ink-950: #0e1712;
+  --color-ink-900: #16211a;
+  --color-ink-800: #223026;
+  --color-ink-700: #33453a;
+  --color-ink-600: #4a5c50;
+  --color-ink-500: #647566;
+  --color-ink-400: #859184;
+  --color-ink-300: #aab6ac;
+  --color-ink-200: #ccd6cf;
+  --color-ink-150: #dbe3dd;
+  --color-ink-100: #e8ede9;
+  --color-ink-50: #f4f7f4;
+
+  /* Status colors — always paired with icon/text, never color-only. Slightly
+     deepened/less pastel than a first pass, to read as a data classification
+     rather than a decorative palette. */
+  --color-status-normal: #1b6e38;
+  --color-status-normal-bg: #e6f3e9;
+  --color-status-atencao: #8a6100;
+  --color-status-atencao-bg: #faf0d3;
+  --color-status-alerta: #9c4600;
+  --color-status-alerta-bg: #fae5d2;
   --color-status-emergencia: #a3241f;
   --color-status-emergencia-bg: #fbdad8;
 
+  /* Accent scale — a warm gold, the site's one deliberate "signature" color
+     beyond green/status. Used sparingly (section markers, the assistant
+     button, hover accents) so it stays a highlight instead of competing
+     with brand green or the status palette for attention. */
+  --color-accent-50: #fdf3e7;
+  --color-accent-100: #fae4c2;
+  --color-accent-200: #f3c98a;
+  --color-accent-300: #e8a94f;
+  --color-accent-400: #d68a2d;
+  --color-accent-500: #b96f1c;
+  --color-accent-600: #965613;
+  --color-accent-700: #7a4510;
+  --color-accent-800: #5f350d;
+  --color-accent-900: #452609;
+
+  /* Regional palette for the Hero map — one bold, professional tone per
+     official Brazilian macro-region. Deliberately shifted away from the
+     brand green and accent gold hues so they read as a separate, map-only
+     legend rather than brand color. Solid = map fill, -bg/-text = legend
+     chips (light wash + dark saturated text, same pattern as status colors). */
+  --color-regiao-norte: #2967ae;
+  --color-regiao-norte-hover: #1d497c;
+  --color-regiao-norte-bg: #e2ecf9;
+  --color-regiao-norte-text: #122c49;
+
+  --color-regiao-nordeste: #d3a122;
+  --color-regiao-nordeste-hover: #9e781a;
+  --color-regiao-nordeste-bg: #f9f2e2;
+  --color-regiao-nordeste-text: #624d18;
+
+  --color-regiao-centro-oeste: #278670;
+  --color-regiao-centro-oeste-hover: #195749;
+  --color-regiao-centro-oeste-bg: #e3f8f3;
+  --color-regiao-centro-oeste-text: #12493d;
+
+  --color-regiao-sudeste: #ce5927;
+  --color-regiao-sudeste-hover: #9a431d;
+  --color-regiao-sudeste-bg: #f9e9e2;
+  --color-regiao-sudeste-text: #622f18;
+
+  --color-regiao-sul: #bc2f50;
+  --color-regiao-sul-hover: #8b233b;
+  --color-regiao-sul-bg: #f8e2e7;
+  --color-regiao-sul-text: #5a1626;
+
+  --shadow-card: 0 1px 2px 0 rgb(20 30 24 / 0.04), 0 1px 3px 0 rgb(20 30 24 / 0.03);
+  --shadow-card-hover: 0 4px 10px -2px rgb(20 30 24 / 0.08), 0 2px 4px -2px rgb(20 30 24 / 0.05);
+  --shadow-elevated: 0 12px 28px -6px rgb(14 23 18 / 0.16), 0 4px 10px -4px rgb(14 23 18 / 0.08);
+
   --animate-fade-in: fade-in 0.2s ease-out;
   --animate-scale-in: scale-in 0.15s ease-out;
+  --animate-pulse-ring: pulse-ring 2.2s cubic-bezier(0.3, 0, 0.6, 1) infinite;
+  --animate-reveal: reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-word-in: word-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 
   @keyframes fade-in {
     from { opacity: 0; }
@@ -37,6 +112,19 @@
   @keyframes scale-in {
     from { opacity: 0; transform: scale(0.97) translateY(4px); }
     to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes word-in {
+    from { opacity: 0; transform: translateY(55%); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(0.85); opacity: 0.55; }
+    70% { transform: scale(1.9); opacity: 0; }
+    100% { transform: scale(1.9); opacity: 0; }
+  }
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
 
@@ -52,8 +140,9 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #f4f9f4;
-  color: #17301c;
+  background-color: #f6f9f6;
+  color: var(--color-ink-900);
+  font-feature-settings: "tnum" 1, "cv05" 1;
 }
 
 /* High contrast mode */
@@ -92,7 +181,7 @@ body {
   left: -999px;
   top: 0;
   z-index: 100;
-  background: #123018;
+  background: var(--color-ink-900);
   color: #fff;
   padding: 0.75rem 1.25rem;
   border-radius: 0 0 8px 0;

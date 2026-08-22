@@ -4,11 +4,11 @@ import { Button } from "./Button";
 
 export function CardSkeleton() {
   return (
-    <div className="surface animate-pulse rounded-2xl border border-[#e0ede1] bg-white p-5">
-      <div className="mb-3 h-4 w-2/3 rounded bg-[#e5f0e6]" />
-      <div className="mb-2 h-3 w-full rounded bg-[#eef5ef]" />
-      <div className="mb-4 h-3 w-4/5 rounded bg-[#eef5ef]" />
-      <div className="h-6 w-24 rounded-full bg-[#eef5ef]" />
+    <div className="surface animate-pulse rounded-xl border border-ink-150 bg-white p-5 shadow-card">
+      <div className="mb-3 h-4 w-2/3 rounded bg-ink-100" />
+      <div className="mb-2 h-3 w-full rounded bg-ink-100" />
+      <div className="mb-4 h-3 w-4/5 rounded bg-ink-100" />
+      <div className="h-6 w-24 rounded-full bg-ink-100" />
     </div>
   );
 }
@@ -33,12 +33,12 @@ export function EmptyState({
   action?: ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center rounded-2xl border border-dashed border-[#cfe2d2] bg-[#f6fbf6] px-6 py-14 text-center">
+    <div className="flex flex-col items-center rounded-xl border border-dashed border-ink-200 bg-ink-50 px-6 py-14 text-center">
       <div className="mb-4 flex size-14 items-center justify-center rounded-full bg-brand-100 text-brand-700">
         <IconInfo className="size-7" />
       </div>
-      <h3 className="mb-1.5 text-lg font-bold text-[#17301c]">{title}</h3>
-      <p className="max-w-sm text-[#3f5b45]">{description}</p>
+      <h3 className="mb-1.5 text-lg font-bold text-ink-900">{title}</h3>
+      <p className="max-w-sm text-ink-600">{description}</p>
       {action && <div className="mt-5">{action}</div>}
     </div>
   );
@@ -46,12 +46,12 @@ export function EmptyState({
 
 export function ErrorState({ description, onRetry }: { description: string; onRetry: () => void }) {
   return (
-    <div className="flex flex-col items-center rounded-2xl border border-[#f0c39a] bg-[#fff6ee] px-6 py-14 text-center">
-      <div className="mb-4 flex size-14 items-center justify-center rounded-full bg-[#fbe4cf] text-[#a34a00]">
+    <div className="flex flex-col items-center rounded-xl border border-status-alerta/25 bg-status-alerta-bg px-6 py-14 text-center">
+      <div className="mb-4 flex size-14 items-center justify-center rounded-full bg-white text-status-alerta">
         <IconTriangleAlert className="size-7" />
       </div>
-      <h3 className="mb-1.5 text-lg font-bold text-[#17301c]">Não foi possível carregar os dados</h3>
-      <p className="max-w-sm text-[#3f5b45]">{description}</p>
+      <h3 className="mb-1.5 text-lg font-bold text-ink-900">Não foi possível carregar os dados</h3>
+      <p className="max-w-sm text-ink-600">{description}</p>
       <div className="mt-5">
         <Button variant="outline" onClick={onRetry}>
           Tentar novamente

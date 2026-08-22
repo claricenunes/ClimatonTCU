@@ -13,20 +13,20 @@ export function SearchInput({ value, onChange, placeholder, label }: SearchInput
       <label htmlFor="search-input" className="sr-only">
         {label}
       </label>
-      <IconSearch className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-[#5c7a62]" />
+      <IconSearch className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-ink-500" />
       <input
         id="search-input"
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-[#c9dfcd] bg-white py-3.5 pl-12 pr-11 text-base text-[#17301c] placeholder:text-[#5c7a62] focus:border-brand-500"
+        className="w-full rounded-lg border border-ink-200 bg-white py-3.5 pl-12 pr-11 text-base text-ink-900 shadow-card transition-colors placeholder:text-ink-400 focus:border-brand-500"
       />
       {value && (
         <button
           onClick={() => onChange("")}
           aria-label="Limpar busca"
-          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1.5 text-[#5c7a62] hover:bg-brand-50 hover:text-brand-800"
+          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1.5 text-ink-500 hover:bg-brand-50 hover:text-brand-800"
         >
           <IconX className="size-4" />
         </button>

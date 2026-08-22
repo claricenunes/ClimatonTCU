@@ -50,7 +50,7 @@ export default function Noticias() {
         </span>
         <div>
           <h1 className="text-2xl font-extrabold text-[#17301c] sm:text-3xl">Notícias</h1>
-          <p className="text-[#3f5b45]">Atualizações sobre a situação climática na Bahia.</p>
+          <p className="text-[#3f5b45]">Atualizações sobre a situação climática no Brasil.</p>
         </div>
       </div>
 

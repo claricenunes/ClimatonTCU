@@ -182,27 +182,66 @@ export const IconClock = (p: IconProps) =>
 export const IconLoader = (p: IconProps) =>
   base(<path d="M12 3a9 9 0 1 0 9 9" />, p);
 
-export const IconSprout = (p: IconProps) =>
+export const IconFileText = (p: IconProps) =>
   base(
     <>
-      <path d="M7 20h10" />
-      <path d="M12 20v-8" />
-      <path d="M12 12C7 12 5 9 5 5c4 0 7 2 7 7Z" />
-      <path d="M12 10c1.5-3 4-4 7-4 0 3.5-2 6-7 6" />
+      <path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" />
+      <path d="M14 3v4h4" />
+      <path d="M9 12.5h6M9 16h6M9 9h2" />
     </>,
     p,
   );
 
-export const IconAiAssistant = (p: IconProps) =>
+export const IconCoins = (p: IconProps) =>
   base(
     <>
-      <circle cx="12" cy="11.5" r="4" />
-      <path d="M5 21v-1.3a7 7 0 0 1 14 0V21" />
-      <path d="M12 7.5V6" />
-      <circle cx="12" cy="4.7" r="0.9" />
-      <path d="M12 6 9.6 4.9M12 6l2.4-1.1" />
-      <circle cx="9.6" cy="4.9" r="0.9" />
-      <circle cx="14.4" cy="4.9" r="0.9" />
+      <ellipse cx="12" cy="6" rx="7" ry="3" />
+      <path d="M5 6v5c0 1.66 3.13 3 7 3s7-1.34 7-3V6" />
+      <path d="M5 11v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5" />
+    </>,
+    p,
+  );
+
+export const IconLandmark = (p: IconProps) =>
+  base(
+    <>
+      <path d="M2 10.5 12 4l10 6.5" />
+      <path d="M4 10.5h16" />
+      <path d="M5 10.5V20M10 10.5V20M14 10.5V20M19 10.5V20" />
+      <path d="M3 20h18" />
+    </>,
+    p,
+  );
+
+export const IconFaceHappy = (p: IconProps) =>
+  base(
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M8.3 13.5c1 1.15 2.2 1.7 3.7 1.7s2.7-.55 3.7-1.7" />
+      <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none" />
+    </>,
+    p,
+  );
+
+export const IconFaceNeutral = (p: IconProps) =>
+  base(
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M8.3 15h7.4" />
+      <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none" />
+    </>,
+    p,
+  );
+
+export const IconFaceSad = (p: IconProps) =>
+  base(
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M8.3 16.3c1-1.15 2.2-1.7 3.7-1.7s2.7.55 3.7 1.7" />
+      <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none" />
     </>,
     p,
   );

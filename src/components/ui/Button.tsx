@@ -8,10 +8,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const VARIANTS: Record<string, string> = {
-  primary: "bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800 shadow-sm",
-  secondary: "bg-brand-50 text-brand-800 hover:bg-brand-100 active:bg-brand-200",
-  outline: "bg-white text-brand-700 border border-brand-300 hover:bg-brand-50 active:bg-brand-100",
-  ghost: "bg-transparent text-brand-800 hover:bg-brand-50 active:bg-brand-100",
+  primary: "bg-brand-600 text-white shadow-card hover:bg-brand-700 hover:shadow-card-hover active:bg-brand-800",
+  secondary: "bg-ink-100 text-ink-900 hover:bg-ink-150 active:bg-ink-200",
+  outline: "bg-white text-ink-800 border border-ink-200 hover:border-brand-400 hover:text-brand-700 active:bg-brand-50",
+  ghost: "bg-transparent text-ink-700 hover:bg-ink-50 hover:text-brand-700 active:bg-ink-100",
 };
 
 const SIZES: Record<string, string> = {
@@ -31,7 +31,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`inline-flex cursor-pointer items-center justify-center rounded-xl font-semibold transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 ${VARIANTS[variant]} ${SIZES[size]} ${className}`}
+      className={`inline-flex cursor-pointer items-center justify-center rounded-lg font-semibold transition-all duration-150 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100 ${VARIANTS[variant]} ${SIZES[size]} ${className}`}
       {...rest}
     >
       {icon}
