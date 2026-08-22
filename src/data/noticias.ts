@@ -132,7 +132,7 @@ export const NOTICIAS: Noticia[] = [
     resumo: "Fenômeno climático El Niño pode intensificar temperaturas durante o período de inverno baiano.",
     conteudo: [
       "Meteorologistas alertam que o El Niño deve causar um inverno mais quente do que o esperado na Bahia, aumentando o risco de incêndios florestais.",
-      "As áreas de vegetação natural e matas podem estar mais propensas a incêndios debido à combinação de temperaturas elevadas e menor umidade relativa do ar.",
+      "As áreas de vegetação natural e matas podem estar mais propensas a incêndios devido à combinação de temperaturas elevadas e menor umidade relativa do ar.",
       "Órgãos de proteção florestal intensificam vigilância e contratam brigadas de combate a incêndios preventivamente.",
     ],
     categoria: "meio_ambiente",
@@ -149,7 +149,7 @@ export const NOTICIAS: Noticia[] = [
     conteudo: [
       "Eventos climáticos extremos como chuvas torrenciais e períodos de seca extrema têm se intensificado na Bahia, criando desafios para a infraestrutura de proteção.",
       "Especialistas indicam que a variabilidade climática requer investimentos contínuos em estruturas de drenagem, sistemas de alerta e capacitação de equipes de resposta.",
-      "O conhecimento sobre esses fenômenos é essencial para preparar comunidades e evitar tragedias.",
+      "O conhecimento sobre esses fenômenos é essencial para preparar comunidades e evitar tragédias.",
     ],
     categoria: "meio_ambiente",
     data: "2026-08-18",
@@ -195,7 +195,7 @@ export const NOTICIAS: Noticia[] = [
     titulo: "Bahia será mais afetada por ondas de calor e seca até 2050",
     resumo: "Projeções climáticas indicam que a Bahia sofrerá mais intensamente com eventos extremos nas próximas décadas.",
     conteudo: [
-      "Estudos de modelagem climática apontam que a Bahia está entre os estados brasileiros que será mais severamente afetado por ondas de calor e períodos prolongados de seca até 2050.",
+      "Estudos de modelagem climática apontam que a Bahia está entre os estados brasileiros que serão mais severamente afetados por ondas de calor e períodos prolongados de seca até 2050.",
       "As projeções indicam aumento de 2 a 3 graus Celsius nas temperaturas médias e redução de 10 a 20% nas precipitações anuais.",
       "Planejadores urbanos e agricultores estão iniciando adaptações para enfrentar estes cenários, como implementação de técnicas de irrigação eficiente e desenho urbano bioclimático.",
     ],

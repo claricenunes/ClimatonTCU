@@ -28,7 +28,7 @@ export const NIVEL_SEMAFORO_META: Record<NivelSemaforo, NivelMeta> = {
     text: "text-status-normal",
     bg: "bg-status-normal-bg",
     border: "border-status-normal/25",
-    dot: "bg-status-normal",
+    dot: "bg-status-normal-vivid",
   },
   amarelo: {
     label: "Intermediário",
@@ -36,7 +36,7 @@ export const NIVEL_SEMAFORO_META: Record<NivelSemaforo, NivelMeta> = {
     text: "text-status-atencao",
     bg: "bg-status-atencao-bg",
     border: "border-status-atencao/25",
-    dot: "bg-status-atencao",
+    dot: "bg-status-atencao-vivid",
   },
   vermelho: {
     label: "Inicial / sem progresso",
@@ -44,7 +44,7 @@ export const NIVEL_SEMAFORO_META: Record<NivelSemaforo, NivelMeta> = {
     text: "text-status-emergencia",
     bg: "bg-status-emergencia-bg",
     border: "border-status-emergencia/25",
-    dot: "bg-status-emergencia",
+    dot: "bg-status-emergencia-vivid",
   },
 };
 
@@ -71,7 +71,7 @@ export const ESTAGIO_META: Record<EstagioAvaliacaoClimatica, NivelMeta> = {
     text: "text-status-emergencia",
     bg: "bg-status-emergencia-bg",
     border: "border-status-emergencia/25",
-    dot: "bg-status-emergencia",
+    dot: "bg-status-emergencia-vivid",
   },
   "Estágio inicial": {
     label: "Estágio inicial",
@@ -79,7 +79,7 @@ export const ESTAGIO_META: Record<EstagioAvaliacaoClimatica, NivelMeta> = {
     text: "text-status-alerta",
     bg: "bg-status-alerta-bg",
     border: "border-status-alerta/25",
-    dot: "bg-status-alerta",
+    dot: "bg-status-alerta-vivid",
   },
   "Estágio intermediário": {
     label: "Estágio intermediário",
@@ -87,7 +87,7 @@ export const ESTAGIO_META: Record<EstagioAvaliacaoClimatica, NivelMeta> = {
     text: "text-status-atencao",
     bg: "bg-status-atencao-bg",
     border: "border-status-atencao/25",
-    dot: "bg-status-atencao",
+    dot: "bg-status-atencao-vivid",
   },
   "Estágio avançado": {
     label: "Estágio avançado",
@@ -95,7 +95,7 @@ export const ESTAGIO_META: Record<EstagioAvaliacaoClimatica, NivelMeta> = {
     text: "text-status-normal",
     bg: "bg-status-normal-bg",
     border: "border-status-normal/25",
-    dot: "bg-status-normal",
+    dot: "bg-status-normal-vivid",
   },
 };
 

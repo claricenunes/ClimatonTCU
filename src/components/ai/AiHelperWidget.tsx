@@ -84,10 +84,18 @@ export function AiHelperWidget() {
   const hasInteractedRef = useRef(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const showTimer = setTimeout(() => {
       if (!hasInteractedRef.current) setShowTeaser(true);
     }, 1600);
-    return () => clearTimeout(timer);
+    // Some content sits right behind this floating bubble on first load — auto-dismiss
+    // it after a while so it doesn't sit indefinitely on top of the page.
+    const hideTimer = setTimeout(() => {
+      if (!hasInteractedRef.current) setShowTeaser(false);
+    }, 8000);
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
   }, []);
 
   useEffect(() => {
@@ -218,9 +226,9 @@ export function AiHelperWidget() {
         onClick={() => (open ? closePanel() : openPanel())}
         aria-expanded={open}
         aria-label={open ? "Fechar assistente virtual" : "Abrir assistente virtual"}
-        className="flex size-20 shrink-0 items-center justify-center rounded-full border-[3px] border-brand-600 bg-white shadow-elevated transition-transform hover:scale-105 active:scale-95 sm:size-24"
+        className="flex size-14 shrink-0 items-center justify-center rounded-full border-[3px] border-brand-600 bg-white shadow-elevated transition-transform hover:scale-105 active:scale-95"
       >
-        <img src={logo} alt="" className="size-14 sm:size-16" />
+        <img src={logo} alt="" className="size-9" />
       </button>
     </div>
   );

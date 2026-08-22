@@ -176,7 +176,7 @@ export function DataVisualization({
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Pizza: Pontuação por Eixo */}
         <div className="rounded-2xl border border-[#e0ede1] bg-white p-6">
-          <h3 className="mb-4 text-base font-semibold text-[#17301c]">Pontuação por Eixo</h3>
+          <h3 className="mb-4 text-base font-semibold text-[#17301c]">Pontuação por eixo</h3>
           <div className="flex flex-col items-center gap-4 sm:flex-row">
             <div>
               {renderPie(
@@ -207,8 +207,8 @@ export function DataVisualization({
 
         {/* Dona: Distribuição de Estágios */}
         <div className="rounded-2xl border border-[#e0ede1] bg-white p-6">
-          <h3 className="mb-4 text-base font-semibold text-[#17301c]">Estágios de Implementação</h3>
-          <p className="mb-4 text-xs text-[#5c7a62]">Passe o mouse sobre o gráfico para ver detalhes</p>
+          <h3 className="mb-4 text-base font-semibold text-[#17301c]">Estágios de implementação</h3>
+          <p className="mb-4 text-xs text-[#5c7a62]">Toque ou passe o mouse sobre o gráfico para ver detalhes</p>
           <div className="flex flex-col items-center gap-4 sm:flex-row">
             <div>
               {renderDonutInteractive(
@@ -240,7 +240,7 @@ export function DataVisualization({
 
       {/* Ranking de Componentes - Gráfico de Barra */}
       <div className="rounded-2xl border border-[#e0ede1] bg-white p-6">
-        <h3 className="mb-4 text-base font-semibold text-[#17301c]">Ranking de Componentes Avaliados</h3>
+        <h3 className="mb-4 text-base font-semibold text-[#17301c]">Ranking de componentes avaliados</h3>
         <div className="space-y-3">
           {componenteData.map((item) => (
             <div key={item.componente}>
@@ -269,7 +269,7 @@ export function DataVisualization({
         </div>
         <div className="rounded-xl border border-[#e0ede1] bg-white p-5 text-center">
           <p className="text-xs font-semibold uppercase tracking-wide text-[#5c7a62]">
-            Média Geral
+            Média geral
           </p>
           <p className="mt-2 text-3xl font-bold text-brand-700">{mediaPontuacao.toFixed(1)}%</p>
         </div>
@@ -289,7 +289,7 @@ export function DataVisualization({
 
       {/* Tabela de Estágios Detalhada */}
       <div className="rounded-2xl border border-[#e0ede1] bg-white p-6">
-        <h3 className="mb-4 text-base font-semibold text-[#17301c]">Detalhamento de Estágios</h3>
+        <h3 className="mb-4 text-base font-semibold text-[#17301c]">Detalhamento de estágios</h3>
         <div className="space-y-3">
           {estagioData.map((item) => (
             <div key={item.estagio} className="flex items-center justify-between rounded-lg bg-[#f9fdf9] p-3">

@@ -99,9 +99,10 @@ export default function MunicipioDetalhe() {
       <div className="py-6">
         {tab === "visao-geral" && (
           <div className="space-y-6">
-            <p className="text-[#17301c]">
-              {STATUS_INFO[municipio.status].description}. {municipio.resumo}
-            </p>
+            <div className="space-y-1.5">
+              <p className="text-sm font-semibold text-[#5c7a62]">{STATUS_INFO[municipio.status].description}.</p>
+              <p className="text-[#17301c]">{municipio.resumo}</p>
+            </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               <IndicatorCard
                 icon={<IconThermometer className="size-5" />}

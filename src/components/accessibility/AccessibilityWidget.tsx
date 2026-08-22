@@ -38,7 +38,13 @@ export function AccessibilityWidget() {
   const { increaseFont, decreaseFont, canIncrease, canDecrease, fontScaleLabel, highContrast, toggleContrast } =
     useAccessibility();
   const [open, setOpen] = useState(false);
-  const [position, setPosition] = useState<Point>(() => ({ x: MARGIN + 8, y: window.innerHeight / 2 }));
+  // Starts near the bottom-left corner (mirroring the AI widget's bottom-right corner)
+  // instead of vertical-center, so it doesn't land on top of hero/header content on
+  // first load — it still remembers wherever the user drags it to.
+  const [position, setPosition] = useState<Point>(() => ({
+    x: MARGIN + 8,
+    y: window.innerHeight - PANEL_HALF_HEIGHT - 24,
+  }));
   const [dragging, setDragging] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -131,7 +137,7 @@ export function AccessibilityWidget() {
           role="dialog"
           aria-modal="false"
           aria-label="Opções de acessibilidade"
-          className={`absolute top-1/2 w-64 -translate-y-1/2 animate-scale-in overflow-hidden rounded-2xl bg-white shadow-elevated ${
+          className={`absolute top-1/2 w-[256px] max-w-[calc(100vw_-_32px)] -translate-y-1/2 animate-scale-in overflow-hidden rounded-2xl bg-white shadow-elevated ${
             openLeft ? "right-full mr-3" : "left-full ml-3"
           }`}
         >

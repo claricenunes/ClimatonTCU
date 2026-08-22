@@ -3,7 +3,7 @@ import type { ConteudoEducativo } from "../types";
 export const CONTEUDOS: ConteudoEducativo[] = [
   {
     id: "e1",
-    titulo: "O que é a Mudança do Clima?",
+    titulo: "O que é a mudança do clima?",
     resumo: "Entenda o fenômeno global causado pelas ações humanas e como ele afeta o planeta.",
     conteudo: [
       "As mudanças climáticas são um fenômeno global causado pela ação humana, especificamente pela forma de produção e consumo energético, descarte de resíduos e mudanças no uso da terra.",
@@ -17,7 +17,7 @@ export const CONTEUDOS: ConteudoEducativo[] = [
   },
   {
     id: "e2",
-    titulo: "Principais Riscos das Mudanças Climáticas",
+    titulo: "Principais riscos das mudanças climáticas",
     resumo: "Conheça os três grandes fatores climáticos que impactam a saúde e infraestrutura.",
     conteudo: [
       "As mudanças climáticas aumentam a frequência, duração e intensidade de eventos meteorológicos extremos que seriam raros em determinado local.",
@@ -31,7 +31,7 @@ export const CONTEUDOS: ConteudoEducativo[] = [
   },
   {
     id: "e3",
-    titulo: "Extremos de Temperatura: Ondas de Calor e Frio",
+    titulo: "Extremos de temperatura: ondas de calor e frio",
     resumo: "Compreenda os riscos de temperaturas extremas e como elas afetam a saúde e infraestrutura.",
     conteudo: [
       "Extremos de temperatura referem-se à exposição a níveis de calor ou frio que superam os limites fisiológicos aos quais os seres humanos estão adaptados.",
@@ -45,7 +45,7 @@ export const CONTEUDOS: ConteudoEducativo[] = [
   },
   {
     id: "e4",
-    titulo: "Extremos de Precipitação: Chuvas Intensas e Secas",
+    titulo: "Extremos de precipitação: chuvas intensas e secas",
     resumo: "Saiba como chuvas extremas e secas prolongadas afetam cidades, saúde e produção de alimentos.",
     conteudo: [
       "Chuvas intensas podem levar a deslizamentos de terra, enchentes, inundações e interrupção de serviços básicos de energia, transporte e saúde.",
@@ -59,7 +59,7 @@ export const CONTEUDOS: ConteudoEducativo[] = [
   },
   {
     id: "e5",
-    titulo: "O que Você Pode Fazer Para Mitigar as Mudanças Climáticas",
+    titulo: "O que você pode fazer para mitigar as mudanças climáticas",
     resumo: "Descubra ações concretas para ajudar a prevenir novas mudanças climáticas.",
     conteudo: [
       "A mitigação pode ser entendida como o esforço para prevenir novas mudanças climáticas, sendo de âmbito global e exigindo mudanças amplas de comportamento e avanços tecnológicos.",
@@ -73,10 +73,10 @@ export const CONTEUDOS: ConteudoEducativo[] = [
   },
   {
     id: "e6",
-    titulo: "Como Se Adaptar às Mudanças Climáticas",
+    titulo: "Como se adaptar às mudanças climáticas",
     resumo: "Estratégias práticas para ajustar a vida à nova realidade climática.",
     conteudo: [
-      "A adaptação implica fazer o reajuste da vida para a realidade que acontecerá, independente dos esforços de mitigação, já que alguma parcela de mudança do clima ocorrerá inevitavelmente.",
+      "A adaptação implica fazer o reajuste da vida para a realidade que acontecerá, independentemente dos esforços de mitigação, já que alguma parcela de mudança do clima ocorrerá inevitavelmente.",
       "Previsões indicam aumento de temperatura para todas as regiões do Brasil: de 1°C a 8°C no Norte, Centro-Oeste, Sul e Sudeste, e de 2°C a 6°C no Nordeste.",
       "Possíveis impactos incluem desabastecimento de energia, mudanças na vegetação (savanização da Amazônia e aridização do semiárido), maior risco de incêndios no Pantanal e Cerrado, e impactos na saúde pública.",
       "Adaptação envolve: proteger infraestruturas contra inundações, ajustar sistemas agrícolas, investir em recursos hídricos, preparar sistemas de saúde e criar planos comunitários de resiliência.",
@@ -87,7 +87,7 @@ export const CONTEUDOS: ConteudoEducativo[] = [
   },
   {
     id: "e7",
-    titulo: "Saiba Mais e Recursos",
+    titulo: "Saiba mais e recursos",
     resumo: "Links e ferramentas para aprofundar seu conhecimento sobre riscos climáticos da sua região.",
     conteudo: [
       "Painel Cidades do AdaptaBrasil (MCTI): Acesse https://painelcidades.adaptabrasil.mcti.gov.br/ para saber mais sobre os riscos climáticos da região em que você mora.",
@@ -149,7 +149,7 @@ export const CONTEUDOS: ConteudoEducativo[] = [
     titulo: "Como podemos nos adaptar às mudanças climáticas?",
     resumo: "O Nordeste deve enfrentar aumentos de temperatura de 2°C a 6°C — entenda os impactos previstos e o que significa se adaptar.",
     conteudo: [
-      "A adaptação implica em reajustar a vida para a realidade que acontecerá, independente dos esforços de mitigação, já que alguma parcela de mudança do clima é inevitável. Os custos são altos, pois envolvem ajustes de infraestruturas de grande escala, como obras de proteção contra inundações, estradas e instalações de geração de energia.",
+      "A adaptação implica reajustar a vida para a realidade que acontecerá, independentemente dos esforços de mitigação, já que alguma parcela de mudança do clima é inevitável. Os custos são altos, pois envolvem ajustes de infraestruturas de grande escala, como obras de proteção contra inundações, estradas e instalações de geração de energia.",
       "Prevê-se aumento de temperatura em todas as regiões do Brasil: de 1°C a 8°C acima da média no Norte, Centro-Oeste, Sul e Sudeste, e de 2°C a 6°C acima da média no Nordeste — região que inclui a Bahia.",
       "Nos cenários mais pessimistas, os possíveis impactos incluem desabastecimento de energia, savanização da Amazônia e aridização do semiárido, maiores riscos de incêndio no Pantanal e no Cerrado, elevação do nível do mar, impactos na geração de emprego, na migração de espécies (inclusive a humana) e na saúde pública.",
       "Fonte: Ministério da Saúde — Mudanças climáticas para profissionais de saúde: guia de bolso (2ª ed., 2026).",

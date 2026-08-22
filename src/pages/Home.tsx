@@ -134,7 +134,7 @@ export default function Home() {
         <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <CtaCard to="/noticias" icon={<IconNewspaper className="size-6" />} title="Notícias" description="Acompanhe as últimas atualizações sobre o clima no Brasil." />
-            <CtaCard to="/comunidade" icon={<IconUsers className="size-6" />} title="Comunidade" description="Veja organizações locais e canais de denúncia no seu estado." />
+            <CtaCard to="/comunidade" icon={<IconUsers className="size-6" />} title="Comunidade" description="Veja grupos, organizações locais e canais de denúncia no seu estado." />
             <CtaCard to="/relatos" icon={<IconMegaphone className="size-6" />} title="Relatos" description="Veja relatos de moradores e compartilhe o que acontece na sua região." />
             <CtaCard to="/educacao" icon={<IconGraduationCap className="size-6" />} title="Educação" description="Aprenda mais sobre convivência com a seca e uso consciente da água." />
           </div>

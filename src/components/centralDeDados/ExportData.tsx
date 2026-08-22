@@ -117,15 +117,15 @@ export function ExportData({ avaliacoes, estadoNome }: ExportDataProps) {
 
   return (
     <div className="rounded-2xl border border-[#e0ede1] bg-white p-6">
-      <h2 className="mb-1 text-lg font-bold text-[#17301c]">Downloads dos Dados</h2>
+      <h2 className="mb-1 text-lg font-bold text-[#17301c]">Downloads dos dados</h2>
       <p className="mb-6 text-sm text-[#3f5b45]">
         Exporte os dados em diferentes formatos para análise, integração ou apresentação.
       </p>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <DownloadCard
-          titulo="CSV Bruto"
-          descricao="Dados originais sem processamento, ideal para análise em ferramentas de dados"
+          titulo="CSV bruto"
+          descricao="Dados originais sem processamento, ideal para análise em ferramentas de dados."
           tamanho={`${(avaliacoes.length * 0.5).toFixed(1)} KB`}
           formato="csv"
           onDownload={handleDownloadCSV}
@@ -133,15 +133,15 @@ export function ExportData({ avaliacoes, estadoNome }: ExportDataProps) {
 
         <DownloadCard
           titulo="Excel"
-          descricao="Planilha pronta para abrir direto no Excel, sem processamento adicional"
+          descricao="Planilha pronta para abrir direto no Excel, sem processamento adicional."
           tamanho={`${(avaliacoes.length * 0.9).toFixed(1)} KB`}
           formato="excel"
           onDownload={handleDownloadExcel}
         />
 
         <DownloadCard
-          titulo="JSON Estruturado"
-          descricao="Formato estruturado para integração com outras ferramentas"
+          titulo="JSON estruturado"
+          descricao="Formato estruturado para integração com outras ferramentas."
           tamanho={`${(avaliacoes.length * 0.8).toFixed(1)} KB`}
           formato="json"
           onDownload={handleDownloadJSON}
@@ -149,7 +149,7 @@ export function ExportData({ avaliacoes, estadoNome }: ExportDataProps) {
 
         <DownloadCard
           titulo="JSON API"
-          descricao="Schema para documentação de API e integração com sistemas"
+          descricao="Schema para documentação de API e integração com sistemas."
           tamanho="~5 KB"
           formato="json"
           onDownload={handleDownloadJSON_API}

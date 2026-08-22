@@ -19,7 +19,7 @@ export const STATUS_STYLES: Record<StatusClimatico, StatusStyle> = {
     text: "text-status-normal",
     bg: "bg-status-normal-bg",
     border: "border-status-normal/25",
-    dot: "bg-status-normal",
+    dot: "bg-status-normal-vivid",
   },
   atencao: {
     label: "Atenção",
@@ -27,7 +27,7 @@ export const STATUS_STYLES: Record<StatusClimatico, StatusStyle> = {
     text: "text-status-atencao",
     bg: "bg-status-atencao-bg",
     border: "border-status-atencao/25",
-    dot: "bg-status-atencao",
+    dot: "bg-status-atencao-vivid",
   },
   alerta: {
     label: "Alerta",
@@ -35,7 +35,7 @@ export const STATUS_STYLES: Record<StatusClimatico, StatusStyle> = {
     text: "text-status-alerta",
     bg: "bg-status-alerta-bg",
     border: "border-status-alerta/25",
-    dot: "bg-status-alerta",
+    dot: "bg-status-alerta-vivid",
   },
   emergencia: {
     label: "Emergência",
@@ -43,7 +43,7 @@ export const STATUS_STYLES: Record<StatusClimatico, StatusStyle> = {
     text: "text-status-emergencia",
     bg: "bg-status-emergencia-bg",
     border: "border-status-emergencia/25",
-    dot: "bg-status-emergencia",
+    dot: "bg-status-emergencia-vivid",
   },
 };
 

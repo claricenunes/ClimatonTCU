@@ -38,6 +38,19 @@ export function IntroAnimation() {
     return () => clearTimeout(holdTimer);
   }, [phase]);
 
+  // On mobile, scrolling the page behind the overlay can shift the browser's
+  // address bar, which resizes the visual viewport and leaves a gap at the
+  // bottom of the fixed overlay showing the footer through. Locking scroll
+  // keeps the viewport — and the overlay's green background — stable.
+  useEffect(() => {
+    if (phase === "hidden") return;
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = overflow;
+    };
+  }, [phase]);
+
   useEffect(() => {
     if (phase !== "leaving") return;
     markSeen();

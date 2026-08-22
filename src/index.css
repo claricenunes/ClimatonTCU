@@ -50,6 +50,14 @@
   --color-status-emergencia: #a3241f;
   --color-status-emergencia-bg: #fbdad8;
 
+  /* Vivid variants of the status colors above, used only for small non-text
+     marks (dots, bars) where the muted text-safe tones above read as too
+     similar to each other at a glance. */
+  --color-status-normal-vivid: #16a34a;
+  --color-status-atencao-vivid: #eab308;
+  --color-status-alerta-vivid: #f97316;
+  --color-status-emergencia-vivid: #dc2626;
+
   /* Regional palette for the Hero map — one bold, professional tone per
      official Brazilian macro-region. Deliberately shifted away from brand
      green so they read as a separate, map-only legend rather than brand

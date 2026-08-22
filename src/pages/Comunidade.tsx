@@ -78,7 +78,7 @@ export default function Comunidade() {
               Veja onde estão os grupos e organizações cadastrados em {estadoSelecionado?.nome}.
             </p>
             <img
-              src="/mapa.png"
+              src={`${import.meta.env.BASE_URL}mapa.png`}
               alt={`Mapa com a localização dos grupos de mobilização cadastrados em ${estadoSelecionado?.nome}`}
               className="aspect-square w-full rounded-xl border border-[#e0ede1] object-cover sm:aspect-auto sm:h-80"
             />
@@ -87,7 +87,7 @@ export default function Comunidade() {
           {organizacoes.length > 0 && (
             <section className="rounded-2xl border border-[#e0ede1] bg-[#f4f9f4] p-6">
               <h2 className="mb-1 flex items-center gap-1.5 text-lg font-bold text-[#17301c]">
-                <IconLandmark className="size-5 text-brand-700" /> Organizações locais em {estadoSelecionado?.nome}
+                <IconLandmark className="size-5 text-brand-700" /> Grupos e organizações locais em {estadoSelecionado?.nome}
               </h2>
               <p className="mb-5 text-sm text-[#3f5b45]">
                 Instituições da sociedade civil que atuam em causas socioambientais e climáticas no estado.
@@ -301,7 +301,7 @@ function NovaOrganizacaoModal({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full rounded-lg border border-[#c9dfcd] px-3.5 py-2.5 focus:border-brand-500"
-            placeholder="contato@organizacao.org.br"
+            placeholder="contato@seugrupo.org.br"
           />
         </Field>
         <Field label="Site (opcional)">

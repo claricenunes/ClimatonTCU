@@ -16,7 +16,7 @@ export function AvaliacaoClimaticaSection({ itens, estadoNome }: AvaliacaoClimat
     return (
       <EmptyState
         title="Ainda não mapeamos a auditoria climática deste estado"
-        description={`A Bahia é o estado piloto do projeto, com diagnóstico completo de auditoria de ação climática. Ainda não temos esses dados para ${estadoNome}.`}
+        description={`Bahia e Minas Gerais são os estados com diagnóstico completo de auditoria de ação climática. Ainda não temos esses dados para ${estadoNome}.`}
       />
     );
   }
