@@ -4,6 +4,7 @@ import { agruparAvaliacaoPorEixo, NIVEL_SEMAFORO_META, nivelFromPontuacao } from
 import type { EixoAvaliacaoClimatica } from "../../types";
 import { EmptyState } from "../ui/States";
 import { EstagioDistribuicao } from "../centralDeDados/EstagioDistribuicao";
+import { IconChevronDown } from "../../lib/icons";
 
 /** Real assessment data (audit-sourced) currently only covers Bahia. */
 export function EixoDetalhe({ uf, eixo }: { uf: string; eixo: EixoAvaliacaoClimatica }) {
@@ -44,13 +45,16 @@ export function EixoDetalhe({ uf, eixo }: { uf: string; eixo: EixoAvaliacaoClima
           const CFace = cMeta.icon;
           return (
             <li key={c.componente} className={`overflow-hidden rounded-xl border ${cMeta.border} ${cMeta.bg}`}>
-              <details>
+              <details className="group">
                 <summary className="flex cursor-pointer list-none items-center gap-3 p-3">
                   <CFace className={`size-6 shrink-0 ${cMeta.text}`} />
                   <span className="flex-1 text-sm font-bold text-ink-900">
                     {c.componente} · {c.label}
                   </span>
                   <span className={`text-sm font-bold ${cMeta.text}`}>{Math.round(c.pontuacaoMedia * 100)}%</span>
+                  <IconChevronDown
+                    className={`size-4 shrink-0 ${cMeta.text} transition-transform group-open:rotate-180`}
+                  />
                 </summary>
                 <div className="space-y-3 border-t border-ink-150 bg-white p-3">
                   {c.itens.map((item) => {
@@ -61,7 +65,13 @@ export function EixoDetalhe({ uf, eixo }: { uf: string; eixo: EixoAvaliacaoClima
                           {c.componente}
                           {item.item} — {item.estagio}
                         </p>
-                        <p className="text-ink-600">{item.comentario}</p>
+                        <p className="text-ink-600">{item.resumo}</p>
+                        <details className="mt-1.5">
+                          <summary className="cursor-pointer text-xs font-semibold text-brand-700 hover:underline">
+                            Ver evidência completa da auditoria
+                          </summary>
+                          <p className="mt-2 text-ink-500">{item.comentario}</p>
+                        </details>
                       </div>
                     );
                   })}

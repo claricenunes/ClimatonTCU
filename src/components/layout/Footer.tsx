@@ -48,12 +48,21 @@ export function Footer() {
         <div>
           <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-ink-500">Sobre os dados</h3>
           <p className="text-sm leading-relaxed text-ink-600">
-            Protótipo com dados simulados, preparado para futura integração com bases oficiais.
+            Os dados exibidos são reais, coletados a partir da plataforma{" "}
+            <a
+              href="https://climatescanner.org/pt/inicio/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-brand-700 hover:underline"
+            >
+              Climate Scanner
+            </a>
+            .
           </p>
         </div>
       </div>
       <div className="border-t border-ink-150 px-4 py-4 text-center text-xs text-ink-500 sm:px-6">
-        ClimAqui Brasil — protótipo interativo. Dados exibidos são simulados.
+        ClimAqui Brasil — protótipo interativo. Dados coletados via Climate Scanner.
       </div>
     </footer>
   );

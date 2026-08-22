@@ -22,6 +22,19 @@ interface PerguntaComOpcoes {
 
 type CannedQuestion = PerguntaComResposta | PerguntaComOpcoes;
 
+/** Renders plain answer text, turning any http(s) URL into a clickable link. */
+function renderAnswer(text: string) {
+  return text.split(/(https?:\/\/\S+)/g).map((part, i) =>
+    /^https?:\/\//.test(part) ? (
+      <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand-700 underline">
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  );
+}
+
 const QUESTIONS: CannedQuestion[] = [
   {
     type: "resposta",
@@ -47,8 +60,7 @@ const QUESTIONS: CannedQuestion[] = [
   {
     type: "resposta",
     question: "Os dados exibidos são reais?",
-    answer:
-      "Não. Este protótipo usa dados simulados para fins de demonstração, preparado para uma futura integração com bases oficiais.",
+    answer: "Sim. Todos os dados são coletados de https://climatescanner.org/pt/inicio/",
   },
   {
     type: "opcoes",
@@ -160,7 +172,7 @@ export function AiHelperWidget() {
                 </button>
                 <p className="mb-2 text-sm font-bold text-ink-900">{activeQuestion.question}</p>
                 {activeQuestion.type === "resposta" ? (
-                  <p className="text-sm leading-relaxed text-ink-600">{activeQuestion.answer}</p>
+                  <p className="text-sm leading-relaxed text-ink-600">{renderAnswer(activeQuestion.answer)}</p>
                 ) : (
                   <ul className="space-y-1.5">
                     {activeQuestion.opcoes.map((opcao) => (

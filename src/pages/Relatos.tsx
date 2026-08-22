@@ -11,6 +11,7 @@ import { CardSkeletonGrid, EmptyState } from "../components/ui/States";
 import { Button } from "../components/ui/Button";
 import { Modal } from "../components/ui/Modal";
 import { EstadoSelect } from "../components/municipio/EstadoSelect";
+import { Avatar } from "../components/ui/Avatar";
 import { useSimulatedLoading } from "../hooks/useSimulatedLoading";
 import { useToast } from "../components/ui/Toast";
 import { formatData } from "../lib/status";
@@ -18,7 +19,7 @@ import { CONFIABILIDADE_META } from "../lib/confiabilidade";
 import { IconHeart, IconPlus, IconUsers, IconCheckCircle, IconInfo, IconShare } from "../lib/icons";
 
 const MENSAGEM_MINHA_CAUSA = "Venha apoiar minha causa";
-const MENSAGEM_ESSA_CAUSA = "Vamos apoiar essa causa";
+const MENSAGEM_ESSA_CAUSA = "Vamos apoiar essa causa, compartilhe em suas redes";
 
 const CATEGORIA_LABEL: Record<CategoriaRelato, string> = {
   falta_agua: "Falta de água",
@@ -174,6 +175,7 @@ export default function Relatos() {
                 </p>
                 <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
                   <div className="flex flex-wrap items-center gap-2">
+                    <Avatar name={r.autor} size="sm" />
                     <p className="text-xs text-[#5c7a62]">
                       {r.autor} · {formatData(r.data)}
                     </p>
