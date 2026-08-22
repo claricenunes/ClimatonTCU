@@ -123,7 +123,7 @@ export default function Home() {
           </div>
         )}
 
-        {selectedUf !== "BA" && (
+        {selectedUf && !["BA", "MG"].includes(selectedUf) && (
           <div className="mx-auto mt-8 max-w-3xl">
             <RegiaoLegend />
           </div>
