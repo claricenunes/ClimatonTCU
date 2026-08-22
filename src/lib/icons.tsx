@@ -266,3 +266,13 @@ export const IconFaceSad = (p: IconProps) =>
     </>,
     p,
   );
+
+export const IconDownload = (p: IconProps) =>
+  base(
+    <>
+      <path d="M12 3v11" />
+      <path d="m8 15 4 4 4-4" />
+      <path d="M4 20h16" />
+    </>,
+    p,
+  );
