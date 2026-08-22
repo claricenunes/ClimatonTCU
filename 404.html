@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ClimAqui Brasil</title>
+    <!--
+      GitHub Pages é hospedagem estática: uma rota interna do app (ex: /ClimatonTCU/central-dados)
+      não existe como arquivo, então o GitHub serve este 404.html. Aqui a gente reescreve a URL
+      como query string e redireciona pra raiz do app, que decodifica e restaura a rota via
+      history.replaceState (ver script equivalente em index.html). Técnica padrão da comunidade
+      para SPAs no GitHub Pages: https://github.com/rafgraph/spa-github-pages
+    -->
+    <script>
+      var pathSegmentsToKeep = 1; // mantém o segmento "/ClimatonTCU"
+      var l = window.location;
+      l.replace(
+        l.protocol + "//" + l.hostname + (l.port ? ":" + l.port : "") +
+          l.pathname.split("/").slice(0, 1 + pathSegmentsToKeep).join("/") + "/?/" +
+          l.pathname.slice(1).split("/").slice(pathSegmentsToKeep).join("/").replace(/&/g, "~and~") +
+          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+          l.hash,
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

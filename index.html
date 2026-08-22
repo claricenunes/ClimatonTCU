@@ -14,10 +14,26 @@
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/ClimatonTCU/assets/index-DY3tNSFw.js"></script>
-    <link rel="stylesheet" crossorigin href="/ClimatonTCU/assets/index-ICAV4dYh.css">
+    <script type="module" crossorigin src="/ClimatonTCU/assets/index-B-WcQY9z.js"></script>
+    <link rel="stylesheet" crossorigin href="/ClimatonTCU/assets/index-xPBnuST-.css">
   </head>
   <body>
     <div id="root"></div>
+    <!-- Contraparte de public/404.html: decodifica a rota que veio na query string via
+         redirect e restaura a URL real antes do React Router montar. -->
+    <script>
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(null, "", l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
   </body>
 </html>
