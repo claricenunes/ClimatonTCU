@@ -98,23 +98,28 @@ export default function Noticias() {
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtradas.map((n) => (
-            <Link
+            <div
               key={n.id}
-              to={`/noticias/${n.id}`}
-              className="surface group flex flex-col rounded-2xl border border-[#e0ede1] bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md"
+              className="surface flex flex-col rounded-2xl border border-[#e0ede1] bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md"
             >
               <span className="mb-3 inline-flex w-max items-center rounded-full bg-brand-50 px-2.5 py-1 text-xs font-bold text-brand-700">
                 {CATEGORIA_LABEL[n.categoria]}
               </span>
-              <h2 className="mb-2 text-lg font-bold text-[#17301c] group-hover:text-brand-700">{n.titulo}</h2>
+              <h2 className="mb-2 text-lg font-bold text-[#17301c]">{n.titulo}</h2>
               <p className="mb-4 line-clamp-3 flex-1 text-sm text-[#3f5b45]">{n.resumo}</p>
-              <div className="flex items-center justify-between text-xs text-[#5c7a62]">
+              <div className="mb-4 flex items-center justify-between text-xs text-[#5c7a62]">
                 <span>{formatData(n.data)}</span>
                 <span className="flex items-center gap-1">
                   <IconClock className="size-3.5" /> {n.tempoLeituraMin} min
                 </span>
               </div>
-            </Link>
+              <Link
+                to={`/noticias/${n.id}`}
+                className="inline-flex items-center text-xs font-semibold text-brand-700 hover:text-brand-800 transition-colors"
+              >
+                Para saber mais acesse a notícia na fonte →
+              </Link>
+            </div>
           ))}
         </div>
       )}
