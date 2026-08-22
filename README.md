@@ -4,11 +4,29 @@ Protótipo clicável de uma plataforma de acompanhamento da situação climátic
 
 ## Stack
 
-- React 19 + TypeScript
-- Vite 8
-- Tailwind CSS v4
-- React Router 7
-- [`@svg-maps/brazil`](https://www.npmjs.com/package/@svg-maps/brazil) — geometria real dos 26 estados + DF (CC-BY-4.0)
+### Runtime
+- **React 19** — biblioteca de UI com renderização reativa
+- **React DOM 19** — integração React com o DOM
+- **React Router 7** — roteamento e navegação entre páginas
+- **TypeScript ~6.0** — tipagem estática e verificação em tempo de desenvolvimento
+
+### Construção & Desenvolvimento
+- **Vite 8** — build tool e dev server rápido
+- **Vite Plugin React 6** — suporte JSX otimizado para Vite
+- **Tailwind CSS 4** — framework CSS utility-first para estilização
+- **Tailwind CSS Vite 4** — integração Tailwind com Vite
+
+### Qualidade & Linting
+- **OXLint 1.75** — linter JavaScript/TypeScript rápido e zero-config
+- **TypeScript Compiler** — verificação de tipos durante build
+
+### UI & Dados
+- **[@svg-maps/brazil](https://www.npmjs.com/package/@svg-maps/brazil) 2.0** — geometria real dos 26 estados + DF (CC-BY-4.0)
+
+### Ferramentas de Desenvolvimento
+- **@types/react** — type definitions para React
+- **@types/react-dom** — type definitions para React DOM
+- **@types/node** — type definitions para Node.js (suporte ao TypeScript)
 
 ## Rodando o projeto
 
