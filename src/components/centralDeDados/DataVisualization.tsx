@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { ItemAvaliacaoClimatica } from "../../types";
 
 interface DataVisualizationProps {
@@ -8,6 +9,7 @@ interface DataVisualizationProps {
 export function DataVisualization({
   avaliacoes,
 }: DataVisualizationProps) {
+  const [hoveredStage, setHoveredStage] = useState<string | null>(null);
   // 1. Pontuação por Eixo
   const eixoAgrupado = avaliacoes.reduce(
     (acc, item) => {
@@ -110,8 +112,8 @@ export function DataVisualization({
     );
   };
 
-  // Função para renderizar dona (donut)
-  const renderDonut = (
+  // Função para renderizar dona (donut) com interatividade
+  const renderDonutInteractive = (
     data: Array<{ label: string; value: number; cor: string }>,
     size = 160,
   ) => {
@@ -121,7 +123,7 @@ export function DataVisualization({
     const centerX = size / 2;
     const centerY = size / 2;
 
-    const paths = data.map((item) => {
+    const segments = data.map((item) => {
       const sliceAngle = (item.value / 100) * 360;
       const startAngle = (currentAngle * Math.PI) / 180;
       const endAngle = ((currentAngle + sliceAngle) * Math.PI) / 180;
@@ -140,15 +142,31 @@ export function DataVisualization({
       const path = `M ${x1} ${y1} A ${outerRadius} ${outerRadius} 0 ${largeArc} 1 ${x2} ${y2} L ${x3} ${y3} A ${innerRadius} ${innerRadius} 0 ${largeArc} 0 ${x4} ${y4} Z`;
 
       currentAngle += sliceAngle;
-      return { path, cor: item.cor };
+      return { path, cor: item.cor, label: item.label };
     });
 
     return (
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="drop-shadow-sm">
-        {paths.map((p, i) => (
-          <path key={i} d={p.path} fill={p.cor} stroke="white" strokeWidth="2" />
-        ))}
-      </svg>
+      <div className="relative inline-block">
+        <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="drop-shadow-sm">
+          {segments.map((seg, i) => (
+            <path
+              key={i}
+              d={seg.path}
+              fill={seg.cor}
+              stroke="white"
+              strokeWidth="2"
+              onMouseEnter={() => setHoveredStage(seg.label)}
+              onMouseLeave={() => setHoveredStage(null)}
+              className="cursor-pointer transition-opacity hover:opacity-80"
+            />
+          ))}
+        </svg>
+        {hoveredStage && (
+          <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full mt-2 rounded-lg bg-[#17301c] px-3 py-2 text-xs text-white whitespace-nowrap">
+            {hoveredStage}
+          </div>
+        )}
+      </div>
     );
   };
 
@@ -190,9 +208,10 @@ export function DataVisualization({
         {/* Dona: Distribuição de Estágios */}
         <div className="rounded-2xl border border-[#e0ede1] bg-white p-6">
           <h3 className="mb-4 text-base font-semibold text-[#17301c]">Estágios de Implementação</h3>
+          <p className="mb-4 text-xs text-[#5c7a62]">Passe o mouse sobre o gráfico para ver detalhes</p>
           <div className="flex flex-col items-center gap-4 sm:flex-row">
             <div>
-              {renderDonut(
+              {renderDonutInteractive(
                 estagioData.map((d) => ({
                   label: d.estagio,
                   value: d.percentual,
