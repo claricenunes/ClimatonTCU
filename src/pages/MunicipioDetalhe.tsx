@@ -191,8 +191,8 @@ export default function MunicipioDetalhe() {
                 title="Nenhum relato por aqui ainda"
                 description="Seja o primeiro a compartilhar o que está acontecendo neste município."
                 action={
-                  <Link to="/comunidade">
-                    <Button variant="outline">Ir para Comunidade</Button>
+                  <Link to="/relatos">
+                    <Button variant="outline">Ir para Relatos</Button>
                   </Link>
                 }
               />

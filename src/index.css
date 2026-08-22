@@ -50,26 +50,11 @@
   --color-status-emergencia: #a3241f;
   --color-status-emergencia-bg: #fbdad8;
 
-  /* Accent scale — a warm gold, the site's one deliberate "signature" color
-     beyond green/status. Used sparingly (section markers, the assistant
-     button, hover accents) so it stays a highlight instead of competing
-     with brand green or the status palette for attention. */
-  --color-accent-50: #fdf3e7;
-  --color-accent-100: #fae4c2;
-  --color-accent-200: #f3c98a;
-  --color-accent-300: #e8a94f;
-  --color-accent-400: #d68a2d;
-  --color-accent-500: #b96f1c;
-  --color-accent-600: #965613;
-  --color-accent-700: #7a4510;
-  --color-accent-800: #5f350d;
-  --color-accent-900: #452609;
-
   /* Regional palette for the Hero map — one bold, professional tone per
-     official Brazilian macro-region. Deliberately shifted away from the
-     brand green and accent gold hues so they read as a separate, map-only
-     legend rather than brand color. Solid = map fill, -bg/-text = legend
-     chips (light wash + dark saturated text, same pattern as status colors). */
+     official Brazilian macro-region. Deliberately shifted away from brand
+     green so they read as a separate, map-only legend rather than brand
+     color. Solid = map fill, -bg/-text = legend chips (light wash + dark
+     saturated text, same pattern as status colors). */
   --color-regiao-norte: #2967ae;
   --color-regiao-norte-hover: #1d497c;
   --color-regiao-norte-bg: #e2ecf9;

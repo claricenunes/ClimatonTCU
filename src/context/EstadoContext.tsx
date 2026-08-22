@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
-const STORAGE_KEY = "situamap:estado-selecionado";
+const STORAGE_KEY = "climaqui:estado-selecionado";
 
 interface EstadoContextValue {
   uf: string | null;

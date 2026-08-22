@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { getMunicipiosByEstado } from "../data/municipios";
 import { getCanaisDenunciaByEstado } from "../data/canaisDenuncia";
 import { getEstadoByUf } from "../data/estados";
+import { getAvaliacaoByEstado } from "../data/avaliacaoClimatica";
 import { useEstado } from "../context/EstadoContext";
 import { useSimulatedLoading } from "../hooks/useSimulatedLoading";
 import { Breadcrumbs } from "../components/ui/Breadcrumbs";
@@ -9,6 +10,7 @@ import { EstadoSelect } from "../components/municipio/EstadoSelect";
 import { IndicatorCard } from "../components/municipio/IndicatorCard";
 import { StatusBadge } from "../components/ui/StatusBadge";
 import { EmptyState } from "../components/ui/States";
+import { AvaliacaoClimaticaSection } from "../components/gestor/AvaliacaoClimaticaSection";
 import { formatPopulacao, RISCO_LABEL, CANAL_TIPO_LABEL } from "../lib/status";
 import type { StatusClimatico } from "../types";
 import { STATUS_INFO } from "../types";
@@ -29,6 +31,7 @@ export default function Gestor() {
   const estadoSelecionado = selectedUf ? getEstadoByUf(selectedUf) : undefined;
   const municipios = selectedUf ? getMunicipiosByEstado(selectedUf) : [];
   const canaisDenuncia = selectedUf ? getCanaisDenunciaByEstado(selectedUf) : [];
+  const avaliacaoItens = selectedUf ? getAvaliacaoByEstado(selectedUf) : [];
 
   const contagemPorStatus = STATUS_ORDER.reduce(
     (acc, status) => {
@@ -42,7 +45,7 @@ export default function Gestor() {
 
   return (
     <div id="conteudo-principal" className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-      <Breadcrumbs items={[{ label: "Início", to: "/" }, { label: "Gestor" }]} />
+      <Breadcrumbs items={[{ label: "Início", to: "/" }, { label: "Central de Dados" }]} />
 
       <div className="mb-8 flex items-center gap-3">
         <span className="flex size-11 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
@@ -97,6 +100,10 @@ export default function Gestor() {
               label={STATUS_INFO.atencao.label}
               value={String(contagemPorStatus.atencao)}
             />
+          </div>
+
+          <div className="mb-8">
+            <AvaliacaoClimaticaSection itens={avaliacaoItens} estadoNome={estadoSelecionado?.nome ?? ""} />
           </div>
 
           <div className="mb-8">

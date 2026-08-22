@@ -12,7 +12,7 @@ export function MunicipioCard({ municipio }: { municipio: Municipio }) {
     >
       <span
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-accent-500 transition-transform duration-200 group-hover:scale-x-100"
+        className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-brand-500 transition-transform duration-200 group-hover:scale-x-100"
       />
       <div className="mb-2 flex items-start justify-between gap-3">
         <h3 className="text-lg font-bold text-ink-900 group-hover:text-brand-700">{municipio.nome}</h3>

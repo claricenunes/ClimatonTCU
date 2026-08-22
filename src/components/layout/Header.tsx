@@ -4,11 +4,12 @@ import { IconMenu, IconX } from "../../lib/icons";
 import logo from "../../icons/logo.png";
 
 const NAV_ITEMS = [
-  { to: "/", label: "SituaMap", end: true },
+  { to: "/", label: "ClimAqui", end: true },
   { to: "/noticias", label: "Notícias" },
   { to: "/comunidade", label: "Comunidade" },
+  { to: "/relatos", label: "Relatos" },
   { to: "/educacao", label: "Educação" },
-  { to: "/gestor", label: "Gestor" },
+  { to: "/gestor", label: "Central de Dados" },
 ];
 
 export function Header() {
@@ -24,7 +25,7 @@ export function Header() {
           <NavLink to="/" className="flex items-center gap-2.5" onClick={() => setMenuOpen(false)}>
             <img src={logo} alt="" className="size-10" />
             <span className="flex items-baseline gap-1.5">
-              <span className="text-lg font-extrabold tracking-tight text-ink-900">SituaMap</span>
+              <span className="text-lg font-extrabold tracking-tight text-ink-900">ClimAqui</span>
               <span className="hidden text-sm font-medium text-ink-500 sm:inline">Brasil</span>
             </span>
           </NavLink>
@@ -83,7 +84,7 @@ export function Header() {
           </nav>
         )}
       </div>
-      <div className="h-[3px] bg-gradient-to-r from-brand-600 via-brand-500 to-accent-500" aria-hidden="true" />
+      <div className="h-[3px] bg-gradient-to-r from-brand-700 via-brand-500 to-brand-300" aria-hidden="true" />
     </header>
   );
 }

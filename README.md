@@ -1,4 +1,4 @@
-# SituaMap Brasil
+# ClimAqui Brasil
 
 Protótipo clicável de uma plataforma de acompanhamento da situação climática dos estados e municípios do Brasil. Sem backend: os dados são mockados em `src/data/`, com uma estrutura pensada para receber uma API/base de dados real no futuro sem mudanças na camada de apresentação. A Bahia é o piloto com maior nível de detalhamento (municípios reais, alertas, sub-regiões); os demais 26 estados + DF têm cobertura mínima (capital + uma cidade) para que o mapa nacional já seja totalmente navegável.
 
@@ -50,7 +50,7 @@ src/
 
 ## Páginas
 
-- **SituaMap (`/`)** — mapa interativo do Brasil por estado (clique, busca/dropdown, teclado), indicadores gerais e lista de municípios filtrável por estado e situação.
+- **ClimAqui (`/`)** — mapa interativo do Brasil por estado (clique, busca/dropdown, teclado), indicadores gerais e lista de municípios filtrável por estado e situação.
 - **Município (`/municipio/:id`)** — indicadores, alertas ativos e relatos da comunidade para um município.
 - **Notícias (`/noticias`)** — atualizações filtráveis por categoria.
 - **Comunidade (`/comunidade`)** — relatos de moradores, com formulário simulado de envio.

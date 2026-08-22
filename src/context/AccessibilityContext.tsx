@@ -2,8 +2,8 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 
 const FONT_SCALES = [0.9, 1, 1.15, 1.3] as const;
 const FONT_LABELS = ["Pequeno", "Padrão", "Grande", "Extra grande"];
-const STORAGE_KEY_SCALE = "situamap:font-scale-index";
-const STORAGE_KEY_CONTRAST = "situamap:high-contrast";
+const STORAGE_KEY_SCALE = "climaqui:font-scale-index";
+const STORAGE_KEY_CONTRAST = "climaqui:high-contrast";
 
 interface AccessibilityContextValue {
   fontScaleIndex: number;

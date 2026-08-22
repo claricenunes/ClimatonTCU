@@ -10,6 +10,7 @@ import MunicipioDetalhe from "./pages/MunicipioDetalhe";
 import Noticias from "./pages/Noticias";
 import NoticiaDetalhe from "./pages/NoticiaDetalhe";
 import Comunidade from "./pages/Comunidade";
+import Relatos from "./pages/Relatos";
 import Educacao from "./pages/Educacao";
 import EducacaoDetalhe from "./pages/EducacaoDetalhe";
 import Gestor from "./pages/Gestor";
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/noticias" element={<Noticias />} />
           <Route path="/noticias/:id" element={<NoticiaDetalhe />} />
           <Route path="/comunidade" element={<Comunidade />} />
+          <Route path="/relatos" element={<Relatos />} />
           <Route path="/educacao" element={<Educacao />} />
           <Route path="/educacao/:id" element={<EducacaoDetalhe />} />
           <Route path="/gestor" element={<Gestor />} />

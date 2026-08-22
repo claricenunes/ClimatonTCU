@@ -168,3 +168,23 @@ export interface CanalDenuncia {
   canais: CanalContato[];
   estadoUf: string;
 }
+
+export type EixoAvaliacaoClimatica = "Políticas públicas" | "Financiamento" | "Governança";
+
+export type EstagioAvaliacaoClimatica = "Sem progresso" | "Estágio inicial" | "Estágio intermediário" | "Estágio avançado";
+
+/** Semáforo de 3 níveis (verde/amarelo/vermelho) usado para resumir os estágios acima nos gráficos. */
+export type NivelSemaforo = "verde" | "amarelo" | "vermelho";
+
+/** Um item de avaliação de auditoria (ex: TCE/TCU) sobre a ação climática estadual,
+ * agrupado por eixo (Políticas públicas, Financiamento, Governança) e componente (ex: F1, G3, P2). */
+export interface ItemAvaliacaoClimatica {
+  id: string;
+  eixo: EixoAvaliacaoClimatica;
+  componente: string;
+  item: string;
+  estagio: EstagioAvaliacaoClimatica;
+  pontuacao: number;
+  comentario: string;
+  estadoUf: string;
+}

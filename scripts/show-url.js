@@ -17,7 +17,7 @@ const localIP = getLocalIP();
 const port = 5173;
 
 console.log('\n' + '='.repeat(60));
-console.log('🌐 SituaMap Brasil - Servidor Local');
+console.log('🌐 ClimAqui Brasil - Servidor Local');
 console.log('='.repeat(60));
 console.log('\n📱 Copie e compartilhe esta URL com sua equipe:\n');
 console.log(`   http://${localIP}:${port}`);

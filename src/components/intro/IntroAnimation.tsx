@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import logo from "../../icons/logo.png";
 
-const SESSION_KEY = "situamap:intro-seen";
+const SESSION_KEY = "climaqui:intro-seen";
 const HOLD_MS = 3400;
 const EXIT_MS = 500;
 
@@ -60,7 +60,7 @@ export function IntroAnimation() {
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Bem-vindo ao SituaMap"
+      aria-label="Bem-vindo ao ClimAqui"
       className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-brand-700 via-brand-800 to-brand-900 px-6 text-center transition-opacity duration-500 ${
         phase === "leaving" ? "opacity-0" : "opacity-100"
       }`}

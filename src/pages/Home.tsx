@@ -5,12 +5,14 @@ import { useEstado } from "../context/EstadoContext";
 import { HeroBrazilMap } from "../components/map/HeroBrazilMap";
 import { RegiaoLegend } from "../components/map/RegiaoLegend";
 import { EstadoSelect } from "../components/municipio/EstadoSelect";
-import { PilaresGrid } from "../components/estado/PilaresGrid";
+import { EixoDetalhe } from "../components/estado/EixoDetalhe";
 import { Reveal } from "../components/ui/Reveal";
 import { RotatingWord } from "../components/ui/RotatingWord";
+import type { EixoAvaliacaoClimatica } from "../types";
 import {
   IconNewspaper,
   IconUsers,
+  IconMegaphone,
   IconGraduationCap,
   IconChevronRight,
   IconMapPin,
@@ -24,7 +26,7 @@ import {
 interface DashboardInfo {
   id: string;
   icon: (props: IconProps) => React.ReactElement;
-  title: string;
+  title: EixoAvaliacaoClimatica;
   question: string;
   description: string;
 }
@@ -78,7 +80,7 @@ export default function Home() {
           <br />
           <RotatingWord
             words={["climáticas", "ambientais", "hídricas"]}
-            className="-rotate-2 rounded-lg bg-accent-500 px-3 text-white"
+            className="-rotate-2 rounded-lg bg-brand-900 px-3 text-white"
           />{" "}
           em seu estado
         </h1>
@@ -105,6 +107,8 @@ export default function Home() {
                     dashboard={d}
                     selected={selectedDashboard === d.id}
                     onToggle={() => setSelectedDashboard((cur) => (cur === d.id ? null : d.id))}
+                    uf={selectedUf}
+                    estadoNome={estadoSelecionado?.nome}
                   />
                 ))}
               </div>
@@ -112,18 +116,6 @@ export default function Home() {
             <div className="lg:order-1 lg:col-span-3">
               <HeroBrazilMap selectedUf={selectedUf} onSelect={handleSelectUf} onClear={handleClearUf} />
             </div>
-
-            {selectedDashboard && (
-              <div className="animate-fade-in rounded-xl border border-ink-150 bg-white p-5 shadow-card lg:order-3 lg:col-span-5 sm:p-6">
-                <p className="mb-1 text-xs font-bold uppercase tracking-wider text-brand-700">
-                  {DASHBOARDS.find((d) => d.id === selectedDashboard)?.title}
-                </p>
-                <h3 className="mb-4 text-lg font-extrabold text-ink-900">
-                  Pilares da ação climática em {estadoSelecionado?.nome}
-                </h3>
-                <PilaresGrid uf={selectedUf} />
-              </div>
-            )}
           </div>
         ) : (
           <div className="mt-8 sm:mt-10">
@@ -139,9 +131,10 @@ export default function Home() {
       {/* CTA */}
       <Reveal>
         <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <CtaCard to="/noticias" icon={<IconNewspaper className="size-6" />} title="Notícias" description="Acompanhe as últimas atualizações sobre o clima no Brasil." />
-            <CtaCard to="/comunidade" icon={<IconUsers className="size-6" />} title="Comunidade" description="Veja relatos de moradores e compartilhe o que acontece na sua região." />
+            <CtaCard to="/comunidade" icon={<IconUsers className="size-6" />} title="Comunidade" description="Veja organizações locais e canais de denúncia no seu estado." />
+            <CtaCard to="/relatos" icon={<IconMegaphone className="size-6" />} title="Relatos" description="Veja relatos de moradores e compartilhe o que acontece na sua região." />
             <CtaCard to="/educacao" icon={<IconGraduationCap className="size-6" />} title="Educação" description="Aprenda mais sobre convivência com a seca e uso consciente da água." />
           </div>
         </section>
@@ -154,41 +147,84 @@ function DashboardCard({
   dashboard: { icon: Icon, title, question, description },
   selected,
   onToggle,
+  uf,
+  estadoNome,
 }: {
   dashboard: DashboardInfo;
   selected: boolean;
   onToggle: () => void;
+  uf: string | null;
+  estadoNome: string | undefined;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onToggle}
-      aria-expanded={selected}
-      className={`w-full rounded-xl border p-5 text-left shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover ${
-        selected ? "border-accent-500 bg-accent-50 ring-2 ring-accent-500/30" : "border-ink-150 bg-white hover:border-accent-300"
-      }`}
+    <div
+      className={`overflow-hidden rounded-xl border shadow-card transition-colors ${
+        selected ? "border-brand-600 ring-2 ring-brand-500/30" : "border-ink-150 hover:border-brand-300"
+      } bg-white`}
     >
-      <div className="flex items-start justify-between gap-3">
-        <span
-          className={`flex size-10 shrink-0 items-center justify-center rounded-lg ${
-            selected ? "bg-accent-500 text-white" : "bg-brand-50 text-brand-700"
-          }`}
-        >
-          <Icon className="size-5" />
-        </span>
-        <IconChevronDown
-          className={`mt-2 size-4 shrink-0 text-ink-400 transition-transform ${selected ? "rotate-180" : ""}`}
-        />
-      </div>
-      <h3 className="mt-3 text-base font-bold text-ink-900">{title}</h3>
-      <p className="mt-0.5 text-sm font-semibold text-brand-700">{question}</p>
-      <p className="mt-1.5 text-sm text-ink-600">{description}</p>
-      {selected && (
-        <p className="mt-3 border-t border-accent-200 pt-3 text-sm font-medium text-accent-700 animate-fade-in">
-          Detalhamento completo deste eixo — em breve.
-        </p>
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={selected}
+        className="w-full p-5 text-left transition-transform hover:-translate-y-0.5"
+      >
+        <div className="flex items-start justify-between gap-3">
+          <span
+            className={`flex size-10 shrink-0 items-center justify-center rounded-lg ${
+              selected ? "bg-brand-600 text-white" : "bg-brand-50 text-brand-700"
+            }`}
+          >
+            <Icon className="size-5" />
+          </span>
+          <IconChevronDown
+            className={`mt-2 size-4 shrink-0 text-ink-400 transition-transform ${selected ? "rotate-180" : ""}`}
+          />
+        </div>
+        <h3 className="mt-3 text-base font-bold text-ink-900">{title}</h3>
+        <p className="mt-0.5 text-sm font-semibold text-brand-700">{question}</p>
+        <p className="mt-1.5 text-sm text-ink-600">{description}</p>
+      </button>
+
+      {selected && uf && (
+        <div className="animate-fade-in border-t border-ink-150 bg-[#fafcf9] p-5">
+          <p className="mb-1 text-xs font-bold uppercase tracking-wider text-brand-700">{title}</p>
+          <h4 className="mb-4 text-base font-extrabold text-ink-900">Avaliação da ação climática em {estadoNome}</h4>
+          <EixoDetalhe uf={uf} eixo={title} />
+
+          <div className="mt-5 border-t border-ink-150 pt-5">
+            <p className="mb-3 text-sm font-semibold text-ink-600">
+              Quer entrar em contato ou relatar uma situação na sua região?
+            </p>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <Link
+                to="/comunidade"
+                className="flex items-center gap-3 rounded-lg border border-ink-150 bg-white p-3 transition-colors hover:border-brand-300 hover:bg-brand-50"
+              >
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700">
+                  <IconUsers className="size-5" />
+                </span>
+                <span>
+                  <span className="block text-sm font-bold text-ink-900">Comunidade</span>
+                  <span className="block text-xs text-ink-600">Organizações e canais de contato no estado</span>
+                </span>
+              </Link>
+              <Link
+                to="/relatos"
+                className="flex items-center gap-3 rounded-lg border border-ink-150 bg-white p-3 transition-colors hover:border-brand-300 hover:bg-brand-50"
+              >
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700">
+                  <IconMegaphone className="size-5" />
+                </span>
+                <span>
+                  <span className="block text-sm font-bold text-ink-900">Relatos</span>
+                  <span className="block text-xs text-ink-600">Relate uma situação climática na sua região</span>
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
       )}
-    </button>
+    </div>
   );
 }
 
@@ -200,7 +236,7 @@ function CtaCard({ to, icon, title, description }: { to: string; icon: React.Rea
     >
       <span
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-accent-500 transition-transform duration-200 group-hover:scale-x-100"
+        className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-brand-500 transition-transform duration-200 group-hover:scale-x-100"
       />
       <span className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700">
         {icon}

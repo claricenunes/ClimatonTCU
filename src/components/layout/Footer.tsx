@@ -8,7 +8,7 @@ export function Footer() {
         <div>
           <div className="mb-3 flex items-center gap-2 text-ink-900">
             <img src={logo} alt="" className="size-7" />
-            <span className="text-base font-extrabold tracking-tight">SituaMap Brasil</span>
+            <span className="text-base font-extrabold tracking-tight">ClimAqui Brasil</span>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-ink-600">
             Plataforma de acompanhamento da situação climática dos estados e municípios do Brasil, com dados abertos
@@ -20,7 +20,7 @@ export function Footer() {
           <ul className="space-y-2 text-sm text-ink-700">
             <li>
               <Link to="/" className="hover:text-brand-700 hover:underline">
-                SituaMap
+                ClimAqui
               </Link>
             </li>
             <li>
@@ -31,6 +31,11 @@ export function Footer() {
             <li>
               <Link to="/comunidade" className="hover:text-brand-700 hover:underline">
                 Comunidade
+              </Link>
+            </li>
+            <li>
+              <Link to="/relatos" className="hover:text-brand-700 hover:underline">
+                Relatos
               </Link>
             </li>
             <li>
@@ -48,7 +53,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-ink-150 px-4 py-4 text-center text-xs text-ink-500 sm:px-6">
-        SituaMap Brasil — protótipo interativo. Dados exibidos são simulados.
+        ClimAqui Brasil — protótipo interativo. Dados exibidos são simulados.
       </div>
     </footer>
   );

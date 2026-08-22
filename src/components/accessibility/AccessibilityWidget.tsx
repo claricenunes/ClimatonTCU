@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useAccessibility } from "../../context/AccessibilityContext";
 import { IconContrast, IconType, IconX } from "../../lib/icons";
 
-const STORAGE_KEY = "situamap:a11y-widget-position";
+const STORAGE_KEY = "climaqui:a11y-widget-position";
 const BUTTON_SIZE = 56;
 const DRAG_THRESHOLD = 6;
 const MARGIN = 8;

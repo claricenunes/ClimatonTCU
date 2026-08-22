@@ -22,14 +22,14 @@ export const NOTICIAS: Noticia[] = [
     titulo: "Chuvas abaixo da média afetam 22 municípios monitorados",
     resumo: "Levantamento aponta redução progressiva do volume de chuvas em regiões do sertão e sudoeste do estado nas últimas oito semanas.",
     conteudo: [
-      "Dados do SituaMap mostram que 9 dos 22 municípios monitorados registraram chuvas pelo menos 30% abaixo da média histórica nos últimos 30 dias.",
+      "Dados do ClimAqui mostram que 9 dos 22 municípios monitorados registraram chuvas pelo menos 30% abaixo da média histórica nos últimos 30 dias.",
       "As regiões do Sertão Produtivo e Sudoeste da Bahia concentram os casos mais severos, com destaque para Guanambi, Brumado e Vitória da Conquista.",
       "Especialistas recomendam atenção redobrada ao uso da água em atividades agrícolas nas próximas semanas.",
     ],
     categoria: "seca",
     data: "2026-08-15",
     estadoUf: "BA",
-    fonte: "SituaMap Bahia",
+    fonte: "ClimAqui Bahia",
     tempoLeituraMin: 4,
   },
   {
@@ -75,12 +75,12 @@ export const NOTICIAS: Noticia[] = [
     categoria: "meio_ambiente",
     data: "2026-08-10",
     estadoUf: "BA",
-    fonte: "SituaMap Bahia",
+    fonte: "ClimAqui Bahia",
     tempoLeituraMin: 2,
   },
   {
     id: "n6",
-    titulo: "Como funciona o índice de seca usado no SituaMap",
+    titulo: "Como funciona o índice de seca usado no ClimAqui",
     resumo: "Entenda a metodologia por trás do indicador que classifica o risco climático dos municípios baianos.",
     conteudo: [
       "O índice de seca combina dados de volume de chuva, temperatura média e histórico de precipitação para gerar uma pontuação de 0 a 100.",
@@ -90,7 +90,7 @@ export const NOTICIAS: Noticia[] = [
     categoria: "prevencao",
     data: "2026-08-05",
     estadoUf: "BA",
-    fonte: "SituaMap Bahia",
+    fonte: "ClimAqui Bahia",
     tempoLeituraMin: 4,
   },
 ];
