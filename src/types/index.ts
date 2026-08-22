@@ -110,7 +110,9 @@ export interface RelatoComunidade {
   status: StatusRelato;
 }
 
-export type CategoriaEducacao = "agua" | "clima" | "prevencao" | "agricultura" | "politicas_publicas";
+export type CategoriaEducacao = "mudancas_climaticas" | "riscos_impactos" | "mitigacao" | "adaptacao" | "recursos";
+
+export type NivelEducacao = "comece_por_aqui" | "aprofunde" | "voce_pode_fazer";
 
 export interface ConteudoEducativo {
   id: string;
@@ -118,6 +120,6 @@ export interface ConteudoEducativo {
   resumo: string;
   conteudo: string[];
   categoria: CategoriaEducacao;
-  nivel: "iniciante" | "intermediario" | "avancado";
+  nivel: NivelEducacao;
   tempoLeituraMin: number;
 }
