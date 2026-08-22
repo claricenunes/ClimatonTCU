@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { getEstadoByUf } from "../data/estados";
 import { useEstado } from "../context/EstadoContext";
 import { HeroBrazilMap } from "../components/map/HeroBrazilMap";
-import { RegiaoLegend } from "../components/map/RegiaoLegend";
 import { EstadoSelect } from "../components/municipio/EstadoSelect";
 import { EixoDetalhe } from "../components/estado/EixoDetalhe";
 import { Reveal } from "../components/ui/Reveal";
@@ -55,11 +54,17 @@ const DASHBOARDS: DashboardInfo[] = [
   },
 ];
 
+/** This prototype's interactive hero (map isolation + eixo dashboards) only has
+ * real audit data for Bahia, so it's the only state selectable here — even
+ * though `selectedUf` is shared app-wide and other pages let you pick any state. */
+const HERO_UF = "BA";
+
 export default function Home() {
   const { uf: selectedUf, setUf, clearUf } = useEstado();
   const [selectedDashboard, setSelectedDashboard] = useState<string | null>(null);
 
-  const estadoSelecionado = selectedUf ? getEstadoByUf(selectedUf) : undefined;
+  const heroUf = selectedUf === HERO_UF ? selectedUf : null;
+  const estadoSelecionado = heroUf ? getEstadoByUf(heroUf) : undefined;
 
   function handleSelectUf(uf: string) {
     setUf(uf);
@@ -86,17 +91,17 @@ export default function Home() {
         </h1>
 
         <div className="mx-auto mt-6 max-w-xs">
-          <EstadoSelect selectedUf={selectedUf} onSelect={handleSelectUf} />
+          <EstadoSelect selectedUf={heroUf} onSelect={handleSelectUf} />
         </div>
 
-        {!selectedUf && (
+        {!heroUf && (
           <p className="mx-auto mt-4 flex max-w-md items-center justify-center gap-1.5 text-sm font-medium text-ink-500">
             <IconMapPin className="size-4 shrink-0 text-brand-600" />
             Ou clique em um estado no mapa abaixo
           </p>
         )}
 
-        {selectedUf ? (
+        {heroUf ? (
           <div className="mx-auto mt-8 grid max-w-6xl grid-cols-1 items-start gap-8 text-left sm:mt-10 lg:grid-cols-5 lg:gap-10">
             <div className="lg:order-2 lg:col-span-2">
               <p className="mb-3 text-sm font-semibold text-ink-600">Escolha um eixo para explorar:</p>
@@ -107,25 +112,19 @@ export default function Home() {
                     dashboard={d}
                     selected={selectedDashboard === d.id}
                     onToggle={() => setSelectedDashboard((cur) => (cur === d.id ? null : d.id))}
-                    uf={selectedUf}
+                    uf={heroUf}
                     estadoNome={estadoSelecionado?.nome}
                   />
                 ))}
               </div>
             </div>
             <div className="lg:order-1 lg:col-span-3">
-              <HeroBrazilMap selectedUf={selectedUf} onSelect={handleSelectUf} onClear={handleClearUf} />
+              <HeroBrazilMap selectedUf={heroUf} onSelect={handleSelectUf} onClear={handleClearUf} />
             </div>
           </div>
         ) : (
           <div className="mt-8 sm:mt-10">
-            <HeroBrazilMap selectedUf={selectedUf} onSelect={handleSelectUf} onClear={handleClearUf} />
-          </div>
-        )}
-
-        {selectedUf && !["BA", "MG"].includes(selectedUf) && (
-          <div className="mx-auto mt-8 max-w-3xl">
-            <RegiaoLegend />
+            <HeroBrazilMap selectedUf={heroUf} onSelect={handleSelectUf} onClear={handleClearUf} />
           </div>
         )}
       </section>

@@ -40,12 +40,12 @@ export default function CentralDeDados() {
         </div>
       </div>
 
-      <div className="mb-8">
-        <ComparativoEstadosCard />
-      </div>
-
       <div className="mb-8 max-w-xs">
         <EstadoSelect selectedUf={selectedUf} onSelect={setUf} />
+      </div>
+
+      <div className="mb-8">
+        <ComparativoEstadosCard />
       </div>
 
       {!selectedUf ? (

@@ -4,8 +4,7 @@ import { REGIAO_BR_COLORS } from "../../lib/regiaoBrColors";
 import { IconArrowLeft } from "../../lib/icons";
 
 const BAHIA_UF = "BA";
-const MINAS_GERAIS_UF = "MG";
-const STATES_WITH_DATA = [BAHIA_UF, MINAS_GERAIS_UF];
+const STATES_WITH_DATA = [BAHIA_UF];
 
 interface Box {
   x: number;
@@ -29,10 +28,10 @@ interface HeroBrazilMapProps {
 /**
  * The Hero's map: every state is shaded by its official macro-region, purely
  * for orientation. Every state also lifts + darkens on hover so the whole
- * map feels alive, but only Bahia and Minas Gerais carry real data in this prototype, so
- * they are the only ones that are actually clickable/keyboard-focusable — the rest
- * just show an informational tooltip on hover. Selecting these states isolates the
- * same real state shape, styled exactly like it is on the full map.
+ * map feels alive, but only Bahia carries real data in this prototype, so
+ * it's the only one that's actually clickable/keyboard-focusable — the rest
+ * just show an informational tooltip on hover. Selecting Bahia isolates its
+ * real state shape, styled exactly like it is on the full map.
  */
 export function HeroBrazilMap({ selectedUf, onSelect, onClear }: HeroBrazilMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -112,7 +111,7 @@ export function HeroBrazilMap({ selectedUf, onSelect, onClear }: HeroBrazilMapPr
       <svg
         viewBox={BRASIL_MAP_VIEWBOX}
         role="group"
-        aria-label="Mapa do Brasil colorido por região. Bahia e Minas Gerais estão disponíveis nesta demonstração."
+        aria-label="Mapa do Brasil colorido por região. Bahia está disponível nesta demonstração."
         className="h-auto w-full animate-fade-in"
       >
         {ESTADOS.map((estado) => {
