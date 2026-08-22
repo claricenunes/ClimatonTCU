@@ -20,13 +20,13 @@ export function Header() {
       <a href="#conteudo-principal" className="skip-link">
         Pular para o conteúdo principal
       </a>
-      <div className="bg-white/95 backdrop-blur">
+      <div className="bg-nav">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
           <NavLink to="/" className="flex items-center gap-2.5" onClick={() => setMenuOpen(false)}>
             <img src={logo} alt="" className="size-10" />
             <span className="flex items-baseline gap-1.5">
-              <span className="text-lg font-extrabold tracking-tight text-ink-900">ClimAqui</span>
-              <span className="hidden text-sm font-medium text-ink-500 sm:inline">Brasil</span>
+              <span className="text-lg font-extrabold tracking-tight text-white">ClimAqui</span>
+              <span className="hidden text-sm font-medium text-white/70 sm:inline">Brasil</span>
             </span>
           </NavLink>
 
@@ -37,10 +37,10 @@ export function Header() {
                   <NavLink
                     to={item.to}
                     className={({ isActive }) =>
-                      `block border-b-2 px-3 py-2 text-[15px] font-semibold transition-colors ${
+                      `block rounded-full px-3.5 py-2 text-[15px] font-semibold transition-colors ${
                         isActive
-                          ? "border-brand-600 text-brand-700"
-                          : "border-transparent text-ink-700 hover:border-ink-200 hover:text-brand-700"
+                          ? "bg-highlight/20 text-highlight-strong"
+                          : "text-white/90 hover:bg-highlight/20 hover:text-highlight-strong"
                       }`
                     }
                   >
@@ -52,7 +52,7 @@ export function Header() {
           </nav>
 
           <button
-            className="rounded-lg p-2 text-ink-700 hover:bg-ink-50 md:hidden"
+            className="rounded-lg p-2 text-white hover:bg-white/10 md:hidden"
             onClick={() => setMenuOpen((v) => !v)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
@@ -63,7 +63,7 @@ export function Header() {
         </div>
 
         {menuOpen && (
-          <nav id="mobile-menu" aria-label="Navegação principal (celular)" className="border-t border-ink-150 md:hidden">
+          <nav id="mobile-menu" aria-label="Navegação principal (celular)" className="border-t border-white/15 md:hidden">
             <ul className="flex flex-col gap-1 px-4 py-3">
               {NAV_ITEMS.slice(1).map((item) => (
                 <li key={item.to}>
@@ -72,7 +72,7 @@ export function Header() {
                     onClick={() => setMenuOpen(false)}
                     className={({ isActive }) =>
                       `block rounded-lg px-4 py-3 text-base font-semibold ${
-                        isActive ? "bg-brand-50 text-brand-700" : "text-ink-700 hover:bg-ink-50"
+                        isActive ? "bg-highlight/20 text-highlight-strong" : "text-white/90 hover:bg-white/10"
                       }`
                     }
                   >
@@ -84,7 +84,7 @@ export function Header() {
           </nav>
         )}
       </div>
-      <div className="h-[3px] bg-gradient-to-r from-brand-700 via-brand-500 to-brand-300" aria-hidden="true" />
+      <div className="h-[3px] bg-highlight" aria-hidden="true" />
     </header>
   );
 }

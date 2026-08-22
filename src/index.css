@@ -80,6 +80,20 @@
   --color-regiao-sul-bg: #f8e2e7;
   --color-regiao-sul-text: #5a1626;
 
+  /* Nav bar / accent palette — sourced directly from the official TCU
+     Climaton Brasil site (sites.tcu.gov.br/climatonbrasil) for brand
+     consistency with the parent project. Scoped to the nav bar and small
+     accent details only — the status and regiao scales above (charts, maps)
+     are deliberately untouched. */
+  --color-nav: #008a3b;
+  --color-nav-deep: #0b7d32;
+  --color-highlight: #f6e31b;
+  --color-highlight-strong: #e8e221;
+  --color-highlight-text: #19331d;
+
+  /* Deep blue used for the rotating-word badge in the hero heading. */
+  --color-badge-blue: #008A3A;
+
   --shadow-card: 0 1px 2px 0 rgb(20 30 24 / 0.04), 0 1px 3px 0 rgb(20 30 24 / 0.03);
   --shadow-card-hover: 0 4px 10px -2px rgb(20 30 24 / 0.08), 0 2px 4px -2px rgb(20 30 24 / 0.05);
   --shadow-elevated: 0 12px 28px -6px rgb(14 23 18 / 0.16), 0 4px 10px -4px rgb(14 23 18 / 0.08);

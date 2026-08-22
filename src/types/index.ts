@@ -185,6 +185,8 @@ export interface ItemAvaliacaoClimatica {
   item: string;
   estagio: EstagioAvaliacaoClimatica;
   pontuacao: number;
+  /** Resumo curto (1 frase) do porquê desse estágio/pontuação — o que já existe e o que falta. */
+  resumo: string;
   comentario: string;
   estadoUf: string;
 }

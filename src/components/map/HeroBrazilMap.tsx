@@ -170,8 +170,12 @@ export function HeroBrazilMap({ selectedUf, onSelect, onClear }: HeroBrazilMapPr
                 {estado.nome} <span className="font-normal text-ink-300">({estado.uf})</span>
               </strong>
               Região {estado.regiao}
-              <br />
-              {isBahia ? "Disponível para explorar" : "Dados ainda não disponíveis no protótipo"}
+              {isBahia && (
+                <>
+                  <br />
+                  Disponível para explorar
+                </>
+              )}
             </div>
           );
         })()}

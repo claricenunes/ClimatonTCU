@@ -75,12 +75,12 @@ export default function Home() {
     <div id="conteudo-principal">
       {/* Hero */}
       <section className="bg-white px-4 pb-10 pt-12 text-center sm:pt-16">
-        <h1 className="font-heading text-[2.15rem] font-extrabold uppercase leading-[1.2] tracking-wide text-brand-700 sm:text-5xl md:text-[3.4rem]">
+        <h1 className="font-heading text-[2.15rem] font-extrabold uppercase leading-[1.2] tracking-wide text-nav sm:text-5xl md:text-[3.4rem]">
           Ajude a evitar crises
           <br />
           <RotatingWord
             words={["climáticas", "ambientais", "hídricas"]}
-            className="-rotate-2 rounded-lg bg-brand-900 px-3 text-white"
+            className="-rotate-2 rounded-lg bg-badge-blue px-3 text-white"
           />{" "}
           em seu estado
         </h1>
@@ -123,9 +123,11 @@ export default function Home() {
           </div>
         )}
 
-        <div className="mx-auto mt-8 max-w-3xl">
-          <RegiaoLegend />
-        </div>
+        {selectedUf !== "BA" && (
+          <div className="mx-auto mt-8 max-w-3xl">
+            <RegiaoLegend />
+          </div>
+        )}
       </section>
 
       {/* CTA */}

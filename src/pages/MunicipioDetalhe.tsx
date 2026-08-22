@@ -10,6 +10,7 @@ import { StatusBadge } from "../components/ui/StatusBadge";
 import { Tabs } from "../components/ui/Tabs";
 import { Button } from "../components/ui/Button";
 import { EmptyState } from "../components/ui/States";
+import { Avatar } from "../components/ui/Avatar";
 import { IndicatorCard } from "../components/municipio/IndicatorCard";
 import { formatPopulacao, formatData, RISCO_LABEL, STATUS_STYLES } from "../lib/status";
 import {
@@ -205,7 +206,10 @@ export default function MunicipioDetalhe() {
                       <span className="text-xs text-[#5c7a62]">{formatData(r.data)}</span>
                     </div>
                     <p className="mt-1 text-sm text-[#3f5b45]">{r.descricao}</p>
-                    <p className="mt-2 text-xs font-medium text-[#5c7a62]">Relato de {r.autor}</p>
+                    <div className="mt-2 flex items-center gap-2">
+                      <Avatar name={r.autor} size="sm" />
+                      <p className="text-xs font-medium text-[#5c7a62]">Relato de {r.autor}</p>
+                    </div>
                   </li>
                 ))}
               </ul>

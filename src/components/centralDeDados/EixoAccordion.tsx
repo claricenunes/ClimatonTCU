@@ -87,7 +87,13 @@ function ComponenteRow({ componente }: { componente: ComponenteAgregado }) {
               <span className="text-xs font-bold text-[#5c7a62]">Item {item.item}</span>
               <EstagioBadge estagio={item.estagio} />
             </div>
-            <p className="text-sm leading-relaxed text-[#3f5b45]">{item.comentario}</p>
+            <p className="text-sm leading-relaxed text-[#3f5b45]">{item.resumo}</p>
+            <details className="mt-2">
+              <summary className="cursor-pointer text-xs font-semibold text-brand-700 hover:underline">
+                Ver evidência completa da auditoria
+              </summary>
+              <p className="mt-2 text-sm leading-relaxed text-[#5c7a62]">{item.comentario}</p>
+            </details>
           </li>
         ))}
       </ul>
