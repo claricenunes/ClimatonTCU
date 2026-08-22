@@ -94,6 +94,7 @@ export interface Noticia {
   /** UF this news item is about, when the demo has state-scoped content. */
   estadoUf?: string;
   fonte: string;
+  url?: string;
   tempoLeituraMin: number;
 }
 
