@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { to: "/noticias", label: "Notícias" },
   { to: "/comunidade", label: "Comunidade" },
   { to: "/educacao", label: "Educação" },
+  { to: "/gestor", label: "Gestor" },
 ];
 
 export function Header() {

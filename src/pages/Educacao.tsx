@@ -1,13 +1,16 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { CONTEUDOS } from "../data/educacao";
+import { useEstado } from "../context/EstadoContext";
+import { getEstadoByUf } from "../data/estados";
 import type { CategoriaEducacao } from "../types";
 import { Breadcrumbs } from "../components/ui/Breadcrumbs";
 import { FilterChips } from "../components/ui/FilterChips";
 import { CardSkeletonGrid, EmptyState } from "../components/ui/States";
 import { Button } from "../components/ui/Button";
+import { EstadoSelect } from "../components/municipio/EstadoSelect";
 import { useSimulatedLoading } from "../hooks/useSimulatedLoading";
-import { IconClock, IconGraduationCap } from "../lib/icons";
+import { IconClock, IconGraduationCap, IconMapPin } from "../lib/icons";
 
 export const CATEGORIA_LABEL: Record<CategoriaEducacao, string> = {
   mudancas_climaticas: "Conceitos Básicos",
@@ -29,14 +32,22 @@ const CATEGORIA_OPTIONS = (Object.keys(CATEGORIA_LABEL) as CategoriaEducacao[]).
 }));
 
 export default function Educacao() {
+  const { uf: selectedUf, setUf } = useEstado();
   const [categoria, setCategoria] = useState<CategoriaEducacao | "todos">("todos");
 
-  const filtrados = useMemo(() => {
-    if (categoria === "todos") return CONTEUDOS;
-    return CONTEUDOS.filter((c) => c.categoria === categoria);
-  }, [categoria]);
+  const estadoSelecionado = selectedUf ? getEstadoByUf(selectedUf) : undefined;
 
-  const loading = useSimulatedLoading(categoria);
+  const conteudosDisponiveis = useMemo(
+    () => CONTEUDOS.filter((c) => !c.estadoUf || c.estadoUf === selectedUf),
+    [selectedUf],
+  );
+
+  const filtrados = useMemo(() => {
+    if (categoria === "todos") return conteudosDisponiveis;
+    return conteudosDisponiveis.filter((c) => c.categoria === categoria);
+  }, [conteudosDisponiveis, categoria]);
+
+  const loading = useSimulatedLoading(`${selectedUf}-${categoria}`);
 
   return (
     <div id="conteudo-principal" className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
@@ -47,10 +58,22 @@ export default function Educacao() {
           <IconGraduationCap className="size-6" />
         </span>
         <div>
-          <h1 className="text-2xl font-extrabold text-[#17301c] sm:text-3xl">Educação</h1>
-          <p className="text-[#3f5b45]">Conteúdos simples para entender sobre o  clima</p>
+          <h1 className="text-2xl font-extrabold text-[#17301c] sm:text-3xl">
+            Educação{estadoSelecionado ? ` — ${estadoSelecionado.nome}` : ""}
+          </h1>
+          <p className="text-[#3f5b45]">Conteúdos simples sobre clima, água e convivência com a seca.</p>
         </div>
       </div>
+
+      <div className="mb-6 max-w-xs">
+        <EstadoSelect selectedUf={selectedUf} onSelect={setUf} />
+      </div>
+
+      {selectedUf === "BA" && (
+        <p className="mb-6 flex items-center gap-1.5 rounded-lg bg-brand-50 px-3.5 py-2.5 text-sm font-semibold text-brand-800">
+          <IconMapPin className="size-4 shrink-0" /> Mostrando conteúdo específico para {estadoSelecionado?.nome}.
+        </p>
+      )}
 
       <div className="mb-6">
         <FilterChips label="Filtrar por tema" options={CATEGORIA_OPTIONS} selected={categoria} onChange={setCategoria} />

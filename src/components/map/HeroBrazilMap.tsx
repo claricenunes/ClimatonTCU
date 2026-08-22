@@ -29,7 +29,8 @@ interface HeroBrazilMapProps {
  * for orientation. Every state also lifts + darkens on hover so the whole
  * map feels alive, but only Bahia carries real data in this prototype, so
  * it's the only one that's actually clickable/keyboard-focusable — the rest
- * just show an informational tooltip on hover.
+ * just show an informational tooltip on hover. Selecting Bahia isolates the
+ * same real state shape, styled exactly like it is on the full map.
  */
 export function HeroBrazilMap({ selectedUf, onSelect, onClear }: HeroBrazilMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -93,7 +94,7 @@ export function HeroBrazilMap({ selectedUf, onSelect, onClear }: HeroBrazilMapPr
             aria-label="Mapa da Bahia, o estado disponível nesta demonstração"
             className="h-auto w-full animate-fade-in"
           >
-            <path d={BRASIL_MAP_PATHS[BAHIA_UF]} fill={bahiaColor.solid} />
+            <path d={BRASIL_MAP_PATHS[BAHIA_UF]} fill={bahiaColor.solid} stroke="#f6f9f6" strokeWidth={1.1} strokeLinejoin="round" />
           </svg>
         ) : (
           <div className="aspect-[4/5] w-full animate-pulse rounded-xl bg-ink-100" />

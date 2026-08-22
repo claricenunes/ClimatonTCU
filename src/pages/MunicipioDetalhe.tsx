@@ -11,7 +11,7 @@ import { Tabs } from "../components/ui/Tabs";
 import { Button } from "../components/ui/Button";
 import { EmptyState } from "../components/ui/States";
 import { IndicatorCard } from "../components/municipio/IndicatorCard";
-import { formatPopulacao, formatData, STATUS_STYLES } from "../lib/status";
+import { formatPopulacao, formatData, RISCO_LABEL, STATUS_STYLES } from "../lib/status";
 import {
   IconArrowLeft,
   IconThermometer,
@@ -20,13 +20,6 @@ import {
   IconUsers,
 } from "../lib/icons";
 import { STATUS_INFO } from "../types";
-
-const RISCO_LABEL: Record<string, string> = {
-  baixo: "Baixo",
-  medio: "Médio",
-  alto: "Alto",
-  muito_alto: "Muito alto",
-};
 
 const TABS = [
   { id: "visao-geral", label: "Visão geral" },

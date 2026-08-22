@@ -47,6 +47,23 @@ export const STATUS_STYLES: Record<StatusClimatico, StatusStyle> = {
   },
 };
 
+export const RISCO_LABEL: Record<string, string> = {
+  baixo: "Baixo",
+  medio: "Médio",
+  alto: "Alto",
+  muito_alto: "Muito alto",
+};
+
+export const CANAL_TIPO_LABEL: Record<string, string> = {
+  telefone: "Telefone",
+  whatsapp: "WhatsApp",
+  email: "E-mail",
+  portal: "Portal",
+  app: "Aplicativo",
+  instagram: "Instagram",
+  facebook: "Facebook",
+};
+
 export function formatPopulacao(n: number): string {
   return n.toLocaleString("pt-BR");
 }

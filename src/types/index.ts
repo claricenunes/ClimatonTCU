@@ -91,12 +91,18 @@ export interface Noticia {
   categoria: CategoriaNoticia;
   data: string;
   municipioId?: string;
+  /** UF this news item is about, when the demo has state-scoped content. */
+  estadoUf?: string;
   fonte: string;
   tempoLeituraMin: number;
 }
 
 export type CategoriaRelato = "falta_agua" | "alagamento" | "vegetacao" | "calor_extremo" | "outro";
 export type StatusRelato = "pendente" | "verificado";
+
+/** Trust level of the author, so readers can weigh a report knowing the
+ * person's track record — protects against repeated false information. */
+export type NivelConfiabilidade = "confiavel" | "novo" | "baixa_confianca";
 
 export interface RelatoComunidade {
   id: string;
@@ -108,6 +114,7 @@ export interface RelatoComunidade {
   data: string;
   apoios: number;
   status: StatusRelato;
+  autorConfiabilidade: NivelConfiabilidade;
 }
 
 export type CategoriaEducacao = "mudancas_climaticas" | "riscos_impactos" | "mitigacao" | "adaptacao" | "recursos";
@@ -122,4 +129,42 @@ export interface ConteudoEducativo {
   categoria: CategoriaEducacao;
   nivel: NivelEducacao;
   tempoLeituraMin: number;
+  /** UF this content is scoped to; omitted means it's shown regardless of the selected state. */
+  estadoUf?: string;
+}
+
+export interface Organizacao {
+  id: string;
+  nome: string;
+  missao: string;
+  linhasDeAtuacao: string[];
+  areaTematica: string;
+  ambito: string;
+  localizacao: string;
+  estadoUf: string;
+  telefone?: string;
+  email?: string;
+  site?: string;
+  instagram?: string;
+}
+
+export type TipoCanalContato = "telefone" | "whatsapp" | "email" | "portal" | "app" | "instagram" | "facebook";
+
+export interface CanalContato {
+  tipo: TipoCanalContato;
+  label: string;
+  href?: string;
+}
+
+/** Official complaint/oversight channel (ouvidoria, disque-denúncia, etc.)
+ * a citizen can use to report a public climate/environmental issue. */
+export interface CanalDenuncia {
+  id: string;
+  orgao: string;
+  nome: string;
+  descricao: string;
+  nota?: string;
+  temas: string[];
+  canais: CanalContato[];
+  estadoUf: string;
 }

@@ -12,6 +12,7 @@ import NoticiaDetalhe from "./pages/NoticiaDetalhe";
 import Comunidade from "./pages/Comunidade";
 import Educacao from "./pages/Educacao";
 import EducacaoDetalhe from "./pages/EducacaoDetalhe";
+import Gestor from "./pages/Gestor";
 import NotFound from "./pages/NotFound";
 
 function ScrollToTop() {
@@ -37,6 +38,7 @@ export default function App() {
           <Route path="/comunidade" element={<Comunidade />} />
           <Route path="/educacao" element={<Educacao />} />
           <Route path="/educacao/:id" element={<EducacaoDetalhe />} />
+          <Route path="/gestor" element={<Gestor />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

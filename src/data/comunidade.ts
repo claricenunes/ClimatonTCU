@@ -11,6 +11,7 @@ export const RELATOS: RelatoComunidade[] = [
     data: "2026-08-19",
     apoios: 34,
     status: "verificado",
+    autorConfiabilidade: "confiavel",
   },
   {
     id: "r2",
@@ -22,6 +23,7 @@ export const RELATOS: RelatoComunidade[] = [
     data: "2026-08-18",
     apoios: 21,
     status: "verificado",
+    autorConfiabilidade: "confiavel",
   },
   {
     id: "r3",
@@ -33,6 +35,7 @@ export const RELATOS: RelatoComunidade[] = [
     data: "2026-08-17",
     apoios: 18,
     status: "pendente",
+    autorConfiabilidade: "novo",
   },
   {
     id: "r4",
@@ -44,6 +47,7 @@ export const RELATOS: RelatoComunidade[] = [
     data: "2026-08-16",
     apoios: 27,
     status: "verificado",
+    autorConfiabilidade: "confiavel",
   },
   {
     id: "r5",
@@ -55,6 +59,7 @@ export const RELATOS: RelatoComunidade[] = [
     data: "2026-08-15",
     apoios: 12,
     status: "pendente",
+    autorConfiabilidade: "novo",
   },
   {
     id: "r6",
@@ -66,6 +71,7 @@ export const RELATOS: RelatoComunidade[] = [
     data: "2026-08-14",
     apoios: 9,
     status: "pendente",
+    autorConfiabilidade: "baixa_confianca",
   },
   {
     id: "r7",
@@ -77,6 +83,7 @@ export const RELATOS: RelatoComunidade[] = [
     data: "2026-08-13",
     apoios: 15,
     status: "verificado",
+    autorConfiabilidade: "confiavel",
   },
 ];
 

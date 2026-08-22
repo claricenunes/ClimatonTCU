@@ -1,12 +1,15 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { NOTICIAS } from "../data/noticias";
+import { getEstadoByUf } from "../data/estados";
+import { useEstado } from "../context/EstadoContext";
 import type { CategoriaNoticia } from "../types";
 import { SearchInput } from "../components/ui/SearchInput";
 import { FilterChips } from "../components/ui/FilterChips";
 import { CardSkeletonGrid, EmptyState } from "../components/ui/States";
 import { Breadcrumbs } from "../components/ui/Breadcrumbs";
 import { Button } from "../components/ui/Button";
+import { EstadoSelect } from "../components/municipio/EstadoSelect";
 import { useSimulatedLoading } from "../hooks/useSimulatedLoading";
 import { formatData } from "../lib/status";
 import { IconClock, IconNewspaper } from "../lib/icons";
@@ -25,20 +28,24 @@ const CATEGORIA_OPTIONS = (Object.keys(CATEGORIA_LABEL) as CategoriaNoticia[]).m
 }));
 
 export default function Noticias() {
+  const { uf: selectedUf, setUf, clearUf } = useEstado();
   const [query, setQuery] = useState("");
   const [categoria, setCategoria] = useState<CategoriaNoticia | "todos">("todos");
 
+  const estadoSelecionado = selectedUf ? getEstadoByUf(selectedUf) : undefined;
+
   const filtradas = useMemo(() => {
     let list = NOTICIAS;
+    if (selectedUf) list = list.filter((n) => n.estadoUf === selectedUf);
     if (categoria !== "todos") list = list.filter((n) => n.categoria === categoria);
     if (query.trim()) {
       const q = query.trim().toLowerCase();
       list = list.filter((n) => n.titulo.toLowerCase().includes(q) || n.resumo.toLowerCase().includes(q));
     }
     return [...list].sort((a, b) => (a.data < b.data ? 1 : -1));
-  }, [query, categoria]);
+  }, [selectedUf, query, categoria]);
 
-  const loading = useSimulatedLoading(`${query}-${categoria}`);
+  const loading = useSimulatedLoading(`${selectedUf}-${query}-${categoria}`);
 
   return (
     <div id="conteudo-principal" className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
@@ -49,9 +56,15 @@ export default function Noticias() {
           <IconNewspaper className="size-6" />
         </span>
         <div>
-          <h1 className="text-2xl font-extrabold text-[#17301c] sm:text-3xl">Notícias</h1>
+          <h1 className="text-2xl font-extrabold text-[#17301c] sm:text-3xl">
+            Notícias{estadoSelecionado ? ` — ${estadoSelecionado.nome}` : ""}
+          </h1>
           <p className="text-[#3f5b45]">Atualizações sobre a situação climática no Brasil.</p>
         </div>
+      </div>
+
+      <div className="mb-6 max-w-xs">
+        <EstadoSelect selectedUf={selectedUf} onSelect={setUf} />
       </div>
 
       <div className="mb-6 flex flex-col gap-4">
@@ -64,13 +77,18 @@ export default function Noticias() {
       ) : filtradas.length === 0 ? (
         <EmptyState
           title="Nenhuma notícia encontrada"
-          description="Tente outra palavra-chave ou remova o filtro de categoria."
+          description={
+            selectedUf && selectedUf !== "BA"
+              ? `Ainda não temos notícias específicas para ${estadoSelecionado?.nome}. A Bahia é o estado piloto do projeto, com cobertura completa.`
+              : "Tente outra palavra-chave ou remova o filtro de categoria."
+          }
           action={
             <Button
               variant="outline"
               onClick={() => {
                 setQuery("");
                 setCategoria("todos");
+                clearUf();
               }}
             >
               Limpar filtros

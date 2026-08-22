@@ -13,7 +13,7 @@ export function EstadoSelect({ selectedUf, onSelect }: EstadoSelectProps) {
   return (
     <div className="relative">
       <label htmlFor="estado-select" className="mb-1.5 block text-sm font-semibold text-ink-800">
-        Ou selecione um estado
+        {selectedUf ? "Estado selecionado" : "Ou selecione um estado"}
       </label>
       <IconMapPin className="pointer-events-none absolute left-4 top-[calc(50%+0.65rem)] size-5 -translate-y-1/2 text-ink-500" />
       <select

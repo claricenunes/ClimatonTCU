@@ -1,20 +1,13 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { MUNICIPIOS, getMunicipiosByEstado } from "../data/municipios";
 import { getEstadoByUf } from "../data/estados";
+import { useEstado } from "../context/EstadoContext";
 import { HeroBrazilMap } from "../components/map/HeroBrazilMap";
 import { RegiaoLegend } from "../components/map/RegiaoLegend";
-import { useSimulatedLoading } from "../hooks/useSimulatedLoading";
 import { EstadoSelect } from "../components/municipio/EstadoSelect";
 import { PilaresGrid } from "../components/estado/PilaresGrid";
-import { MunicipioCard } from "../components/municipio/MunicipioCard";
-import { CardSkeletonGrid, EmptyState } from "../components/ui/States";
-import { FilterChips } from "../components/ui/FilterChips";
-import { Button } from "../components/ui/Button";
 import { Reveal } from "../components/ui/Reveal";
 import { RotatingWord } from "../components/ui/RotatingWord";
-import type { StatusClimatico } from "../types";
-import { STATUS_INFO } from "../types";
 import {
   IconNewspaper,
   IconUsers,
@@ -27,11 +20,6 @@ import {
   IconChevronDown,
   type IconProps,
 } from "../lib/icons";
-
-const STATUS_OPTIONS = (Object.keys(STATUS_INFO) as StatusClimatico[]).map((s) => ({
-  value: s,
-  label: STATUS_INFO[s].label,
-}));
 
 interface DashboardInfo {
   id: string;
@@ -66,27 +54,18 @@ const DASHBOARDS: DashboardInfo[] = [
 ];
 
 export default function Home() {
-  const [selectedUf, setSelectedUf] = useState<string | null>(null);
-  const [statusFilter, setStatusFilter] = useState<StatusClimatico | "todos">("todos");
+  const { uf: selectedUf, setUf, clearUf } = useEstado();
   const [selectedDashboard, setSelectedDashboard] = useState<string | null>(null);
 
   const estadoSelecionado = selectedUf ? getEstadoByUf(selectedUf) : undefined;
 
-  const municipiosFiltrados = useMemo(() => {
-    let list = selectedUf ? getMunicipiosByEstado(selectedUf) : MUNICIPIOS;
-    if (statusFilter !== "todos") list = list.filter((m) => m.status === statusFilter);
-    return list;
-  }, [selectedUf, statusFilter]);
-
-  const loading = useSimulatedLoading(`${selectedUf}-${statusFilter}`);
-
   function handleSelectUf(uf: string) {
-    setSelectedUf(uf);
+    setUf(uf);
     setSelectedDashboard(null);
   }
 
   function handleClearUf() {
-    setSelectedUf(null);
+    clearUf();
     setSelectedDashboard(null);
   }
 
@@ -156,50 +135,6 @@ export default function Home() {
           <RegiaoLegend />
         </div>
       </section>
-
-      {/* Municípios list */}
-      <Reveal>
-        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2 className="text-2xl font-extrabold text-ink-900">
-                {estadoSelecionado ? `Municípios em ${estadoSelecionado.nome}` : "Todos os municípios"}
-              </h2>
-              <p className="mt-1 text-ink-600">
-                {municipiosFiltrados.length} município{municipiosFiltrados.length === 1 ? "" : "s"} encontrado
-                {municipiosFiltrados.length === 1 ? "" : "s"}
-              </p>
-            </div>
-            <FilterChips label="Filtrar por situação" options={STATUS_OPTIONS} selected={statusFilter} onChange={setStatusFilter} />
-          </div>
-
-          {loading ? (
-            <CardSkeletonGrid count={6} />
-          ) : municipiosFiltrados.length === 0 ? (
-            <EmptyState
-              title="Nenhum município encontrado"
-              description="Tente selecionar outro estado ou outro filtro de situação climática."
-              action={
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    setSelectedUf(null);
-                    setStatusFilter("todos");
-                  }}
-                >
-                  Limpar filtros
-                </Button>
-              }
-            />
-          ) : (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {municipiosFiltrados.map((m) => (
-                <MunicipioCard key={m.id} municipio={m} />
-              ))}
-            </div>
-          )}
-        </section>
-      </Reveal>
 
       {/* CTA */}
       <Reveal>
