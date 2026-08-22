@@ -6,7 +6,7 @@ import { EmptyState } from "../ui/States";
 import { EstagioDistribuicao } from "../centralDeDados/EstagioDistribuicao";
 import { IconChevronDown } from "../../lib/icons";
 
-/** Real assessment data (audit-sourced) currently only covers Bahia. */
+/** Real assessment data (audit-sourced) currently covers Bahia and Minas Gerais. */
 export function EixoDetalhe({ uf, eixo }: { uf: string; eixo: EixoAvaliacaoClimatica }) {
   const itens = useMemo(() => getAvaliacaoByEstado(uf).filter((i) => i.eixo === eixo), [uf, eixo]);
 
@@ -14,7 +14,7 @@ export function EixoDetalhe({ uf, eixo }: { uf: string; eixo: EixoAvaliacaoClima
     return (
       <EmptyState
         title="Ainda não temos esses dados"
-        description="A Bahia é o estado piloto do projeto, com avaliação completa de auditoria sobre a ação climática estadual. Ainda não temos esses dados para os demais estados."
+        description="Bahia e Minas Gerais são os estados com avaliação completa de auditoria sobre a ação climática estadual. Ainda não temos esses dados para os demais estados."
       />
     );
   }

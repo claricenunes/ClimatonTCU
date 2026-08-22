@@ -125,6 +125,8 @@ export interface EixoAgregado {
   componentes: ComponenteAgregado[];
 }
 
+export type { EixoAvaliacaoClimatica };
+
 function media(itens: ItemAvaliacaoClimatica[]): number {
   return itens.reduce((soma, i) => soma + i.pontuacao, 0) / itens.length;
 }

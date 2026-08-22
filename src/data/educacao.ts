@@ -100,7 +100,7 @@ export const CONTEUDOS: ConteudoEducativo[] = [
     tempoLeituraMin: 3,
   },
   {
-    id: "e7",
+    id: "e8",
     titulo: "O que é a mudança do clima?",
     resumo: "Entenda o efeito estufa, por que ele se intensificou e o que isso tem a ver com a forma como produzimos e consumimos.",
     conteudo: [
@@ -115,7 +115,7 @@ export const CONTEUDOS: ConteudoEducativo[] = [
     estadoUf: "BA",
   },
   {
-    id: "e8",
+    id: "e9",
     titulo: "Principais riscos das mudanças climáticas para a saúde",
     resumo: "Extremos de temperatura, chuvas intensas e poluição do ar são as três frentes que mais afetam a saúde e as cidades.",
     conteudo: [
@@ -131,7 +131,7 @@ export const CONTEUDOS: ConteudoEducativo[] = [
     estadoUf: "BA",
   },
   {
-    id: "e9",
+    id: "e10",
     titulo: "O que posso fazer para ajudar a mitigar a mudança do clima?",
     resumo: "Mitigar é agir para prevenir novas mudanças climáticas — um esforço global que exige mudanças de comportamento e tecnologia.",
     conteudo: [
@@ -145,7 +145,7 @@ export const CONTEUDOS: ConteudoEducativo[] = [
     estadoUf: "BA",
   },
   {
-    id: "e10",
+    id: "e11",
     titulo: "Como podemos nos adaptar às mudanças climáticas?",
     resumo: "O Nordeste deve enfrentar aumentos de temperatura de 2°C a 6°C — entenda os impactos previstos e o que significa se adaptar.",
     conteudo: [
@@ -160,7 +160,7 @@ export const CONTEUDOS: ConteudoEducativo[] = [
     estadoUf: "BA",
   },
   {
-    id: "e11",
+    id: "e12",
     titulo: "Onde posso saber mais sobre os riscos climáticos da minha região?",
     resumo: "Painéis públicos permitem consultar os riscos climáticos e a resiliência da infraestrutura do seu estado.",
     conteudo: [
