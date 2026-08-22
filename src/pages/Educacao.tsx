@@ -10,17 +10,17 @@ import { useSimulatedLoading } from "../hooks/useSimulatedLoading";
 import { IconClock, IconGraduationCap } from "../lib/icons";
 
 export const CATEGORIA_LABEL: Record<CategoriaEducacao, string> = {
-  agua: "Água",
-  clima: "Clima",
-  prevencao: "Prevenção",
-  agricultura: "Agricultura",
-  politicas_publicas: "Políticas públicas",
+  mudancas_climaticas: "Conceitos Básicos",
+  riscos_impactos: "Riscos e Impactos",
+  mitigacao: "Mitigação",
+  adaptacao: "Adaptação",
+  recursos: "Recursos e Links",
 };
 
 const NIVEL_LABEL: Record<string, string> = {
-  iniciante: "Iniciante",
-  intermediario: "Intermediário",
-  avancado: "Avançado",
+  comece_por_aqui: "Comece por aqui",
+  aprofunde: "Aprofunde",
+  voce_pode_fazer: "Você pode fazer",
 };
 
 const CATEGORIA_OPTIONS = (Object.keys(CATEGORIA_LABEL) as CategoriaEducacao[]).map((c) => ({
@@ -48,7 +48,7 @@ export default function Educacao() {
         </span>
         <div>
           <h1 className="text-2xl font-extrabold text-[#17301c] sm:text-3xl">Educação</h1>
-          <p className="text-[#3f5b45]">Conteúdos simples sobre clima, água e convivência com a seca.</p>
+          <p className="text-[#3f5b45]">Conteúdos simples para entender sobre o  clima</p>
         </div>
       </div>
 
