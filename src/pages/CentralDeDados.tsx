@@ -7,6 +7,7 @@ import { Breadcrumbs } from "../components/ui/Breadcrumbs";
 import { EstadoSelect } from "../components/municipio/EstadoSelect";
 import { EmptyState } from "../components/ui/States";
 import { AvaliacaoClimaticaSection } from "../components/centralDeDados/AvaliacaoClimaticaSection";
+import { ComparativoEstadosCard } from "../components/centralDeDados/ComparativoEstadosCard";
 import { DataVisualization } from "../components/centralDeDados/DataVisualization";
 import { ExportData } from "../components/centralDeDados/ExportData";
 import { CANAL_TIPO_LABEL } from "../lib/status";
@@ -37,6 +38,10 @@ export default function CentralDeDados() {
             Indicadores por município e canais de prestação de contas para apoiar a gestão pública.
           </p>
         </div>
+      </div>
+
+      <div className="mb-8">
+        <ComparativoEstadosCard />
       </div>
 
       <div className="mb-8 max-w-xs">

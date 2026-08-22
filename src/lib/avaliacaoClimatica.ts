@@ -1,4 +1,5 @@
 import { COMPONENTE_LABEL } from "../data/avaliacaoClimatica";
+import { COMPARATIVO_BA_MG } from "../data/comparativoEstados";
 import type { EixoAvaliacaoClimatica, EstagioAvaliacaoClimatica, ItemAvaliacaoClimatica, NivelSemaforo } from "../types";
 import {
   IconCheckCircle,
@@ -168,4 +169,28 @@ export function agruparAvaliacaoPorEixo(itens: ItemAvaliacaoClimatica[]): EixoAg
       componentes,
     };
   });
+}
+
+export interface GapIndicadorEstados {
+  componente: string;
+  label: string;
+  pontuacaoBa: number;
+  pontuacaoMg: number;
+  gap: number;
+  porque?: string;
+}
+
+/** Retorna os `quantidade` componentes em que a Bahia mais está atrás de Minas Gerais
+ * (maior gap de pontuação), ordenados do maior para o menor gap. */
+export function pioresGapsBaVsMg(quantidade: number): GapIndicadorEstados[] {
+  return COMPARATIVO_BA_MG.map((c) => ({
+    componente: c.componente,
+    label: COMPONENTE_LABEL[c.componente] ?? c.componente,
+    pontuacaoBa: c.pontuacaoBa,
+    pontuacaoMg: c.pontuacaoMg,
+    gap: c.pontuacaoMg - c.pontuacaoBa,
+    porque: c.porque,
+  }))
+    .sort((a, b) => b.gap - a.gap)
+    .slice(0, quantidade);
 }
