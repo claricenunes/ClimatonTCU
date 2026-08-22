@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-import { getMunicipiosByEstado } from "../data/municipios";
 import { getCanaisDenunciaByEstado } from "../data/canaisDenuncia";
 import { getEstadoByUf } from "../data/estados";
 import { getAvaliacaoByEstado } from "../data/avaliacaoClimatica";
@@ -7,39 +5,19 @@ import { useEstado } from "../context/EstadoContext";
 import { useSimulatedLoading } from "../hooks/useSimulatedLoading";
 import { Breadcrumbs } from "../components/ui/Breadcrumbs";
 import { EstadoSelect } from "../components/municipio/EstadoSelect";
-import { IndicatorCard } from "../components/municipio/IndicatorCard";
-import { StatusBadge } from "../components/ui/StatusBadge";
 import { EmptyState } from "../components/ui/States";
 import { AvaliacaoClimaticaSection } from "../components/centralDeDados/AvaliacaoClimaticaSection";
-import { formatPopulacao, RISCO_LABEL, CANAL_TIPO_LABEL } from "../lib/status";
-import type { StatusClimatico } from "../types";
-import { STATUS_INFO } from "../types";
-import {
-  IconLandmark,
-  IconUsers,
-  IconTriangleAlert,
-  IconOctagonAlert,
-  IconMegaphone,
-  IconMapPin,
-} from "../lib/icons";
-
-const STATUS_ORDER: StatusClimatico[] = ["emergencia", "alerta", "atencao", "normal"];
+import { DataVisualization } from "../components/centralDeDados/DataVisualization";
+import { ExportData } from "../components/centralDeDados/ExportData";
+import { CANAL_TIPO_LABEL } from "../lib/status";
+import { IconLandmark, IconMegaphone } from "../lib/icons";
 
 export default function CentralDeDados() {
   const { uf: selectedUf, setUf } = useEstado();
 
   const estadoSelecionado = selectedUf ? getEstadoByUf(selectedUf) : undefined;
-  const municipios = selectedUf ? getMunicipiosByEstado(selectedUf) : [];
   const canaisDenuncia = selectedUf ? getCanaisDenunciaByEstado(selectedUf) : [];
   const avaliacaoItens = selectedUf ? getAvaliacaoByEstado(selectedUf) : [];
-
-  const contagemPorStatus = STATUS_ORDER.reduce(
-    (acc, status) => {
-      acc[status] = municipios.filter((m) => m.status === status).length;
-      return acc;
-    },
-    {} as Record<StatusClimatico, number>,
-  );
 
   const loading = useSimulatedLoading(selectedUf);
 
@@ -81,71 +59,22 @@ export default function CentralDeDados() {
         </div>
       ) : (
         <>
-          <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            <IndicatorCard icon={<IconUsers className="size-5" />} label="Municípios" value={String(municipios.length)} />
-            <IndicatorCard
-              icon={<IconOctagonAlert className="size-5" />}
-              label={STATUS_INFO.emergencia.label}
-              value={String(contagemPorStatus.emergencia)}
-              tone={contagemPorStatus.emergencia > 0 ? "warn" : "neutral"}
-            />
-            <IndicatorCard
-              icon={<IconTriangleAlert className="size-5" />}
-              label={STATUS_INFO.alerta.label}
-              value={String(contagemPorStatus.alerta)}
-              tone={contagemPorStatus.alerta > 0 ? "warn" : "neutral"}
-            />
-            <IndicatorCard
-              icon={<IconTriangleAlert className="size-5" />}
-              label={STATUS_INFO.atencao.label}
-              value={String(contagemPorStatus.atencao)}
-            />
-          </div>
-
           <div className="mb-8">
             <AvaliacaoClimaticaSection itens={avaliacaoItens} estadoNome={estadoSelecionado?.nome ?? ""} />
           </div>
 
           <div className="mb-8">
-            <h2 className="mb-1 text-lg font-bold text-[#17301c]">Municípios monitorados</h2>
-            <p className="mb-4 text-sm text-[#3f5b45]">
-              Situação climática e indicadores hídricos por município, atualizados periodicamente.
-            </p>
-            <div className="surface overflow-x-auto rounded-2xl border border-[#e0ede1] bg-white">
-              <table className="w-full min-w-[720px] text-left text-sm">
-                <thead>
-                  <tr className="border-b border-[#e0ede1] text-xs font-semibold uppercase tracking-wide text-[#5c7a62]">
-                    <th className="px-4 py-3">Município</th>
-                    <th className="px-4 py-3">População</th>
-                    <th className="px-4 py-3">Situação</th>
-                    <th className="px-4 py-3">Chuva (30 dias)</th>
-                    <th className="px-4 py-3">Índice de seca</th>
-                    <th className="px-4 py-3">Risco</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {municipios.map((m) => (
-                    <tr key={m.id} className="border-b border-[#e0ede1] last:border-0 hover:bg-[#f4f9f4]">
-                      <td className="px-4 py-3 font-semibold text-[#17301c]">
-                        <Link to={`/municipio/${m.id}`} className="hover:underline">
-                          {m.nome}
-                        </Link>
-                      </td>
-                      <td className="px-4 py-3 text-[#3f5b45]">{formatPopulacao(m.populacao)}</td>
-                      <td className="px-4 py-3">
-                        <StatusBadge status={m.status} size="sm" />
-                      </td>
-                      <td className="px-4 py-3 text-[#3f5b45]">
-                        {m.indicadores.chuvaUltimos30Dias} mm
-                        <span className="text-xs text-[#8ba690]"> / {m.indicadores.chuvaMediaHistorica} mm média</span>
-                      </td>
-                      <td className="px-4 py-3 text-[#3f5b45]">{m.indicadores.indiceSeca} / 100</td>
-                      <td className="px-4 py-3 text-[#3f5b45]">{RISCO_LABEL[m.indicadores.risco]}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <DataVisualization
+              avaliacoes={avaliacaoItens}
+              estadoNome={estadoSelecionado?.nome ?? ""}
+            />
+          </div>
+
+          <div className="mb-8">
+            <ExportData
+              avaliacoes={avaliacaoItens}
+              estadoNome={estadoSelecionado?.nome ?? ""}
+            />
           </div>
 
           <div>
@@ -193,12 +122,6 @@ export default function CentralDeDados() {
               </ul>
             )}
           </div>
-
-          {municipios.length === 0 && (
-            <p className="mt-4 flex items-center gap-1.5 text-sm text-[#5c7a62]">
-              <IconMapPin className="size-4 shrink-0" /> Nenhum município monitorado neste estado ainda.
-            </p>
-          )}
         </>
       )}
     </div>
