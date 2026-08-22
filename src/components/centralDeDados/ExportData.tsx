@@ -62,6 +62,38 @@ export function ExportData({ avaliacoes, estadoNome }: ExportDataProps) {
     link.click();
   };
 
+  const handleDownloadExcel = () => {
+    const escapeHtml = (value: string | number) =>
+      String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    const headers = ["ID", "Eixo", "Componente", "Item", "Estágio", "Pontuação", "Estado", "Comentário"];
+    const headerRow = headers.map((h) => `<th>${escapeHtml(h)}</th>`).join("");
+    const bodyRows = avaliacoes
+      .map(
+        (item) => `<tr>
+          <td>${escapeHtml(item.id)}</td>
+          <td>${escapeHtml(item.eixo)}</td>
+          <td>${escapeHtml(item.componente)}</td>
+          <td>${escapeHtml(item.item)}</td>
+          <td>${escapeHtml(item.estagio)}</td>
+          <td>${escapeHtml(item.pontuacao)}</td>
+          <td>${escapeHtml(item.estadoUf)}</td>
+          <td>${escapeHtml(item.comentario)}</td>
+        </tr>`,
+      )
+      .join("");
+
+    // Excel abre normalmente uma tabela HTML salva com extensão .xls — evita depender
+    // de uma lib externa (o pacote "xlsx" do npm está com vulnerabilidade sem correção).
+    const html = `<html><head><meta charset="UTF-8"></head><body><table border="1"><thead><tr>${headerRow}</tr></thead><tbody>${bodyRows}</tbody></table></body></html>`;
+
+    const blob = new Blob([html], { type: "application/vnd.ms-excel;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `central-dados-${estadoNome}-${new Date().toISOString().split("T")[0]}.xls`;
+    link.click();
+  };
+
   const handleDownloadJSON_API = () => {
     const json = JSON.stringify(
       {
@@ -90,13 +122,21 @@ export function ExportData({ avaliacoes, estadoNome }: ExportDataProps) {
         Exporte os dados em diferentes formatos para análise, integração ou apresentação.
       </p>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <DownloadCard
           titulo="CSV Bruto"
-          descricao="Dados originais sem processamento, pronto para Excel ou análise"
+          descricao="Dados originais sem processamento, ideal para análise em ferramentas de dados"
           tamanho={`${(avaliacoes.length * 0.5).toFixed(1)} KB`}
           formato="csv"
           onDownload={handleDownloadCSV}
+        />
+
+        <DownloadCard
+          titulo="Excel"
+          descricao="Planilha pronta para abrir direto no Excel, sem processamento adicional"
+          tamanho={`${(avaliacoes.length * 0.9).toFixed(1)} KB`}
+          formato="excel"
+          onDownload={handleDownloadExcel}
         />
 
         <DownloadCard
@@ -119,7 +159,7 @@ export function ExportData({ avaliacoes, estadoNome }: ExportDataProps) {
       <div className="mt-6 rounded-lg bg-brand-50 p-4">
         <h3 className="text-sm font-semibold text-brand-700">Dica</h3>
         <p className="mt-1 text-sm text-brand-600">
-          Escolha CSV para usar em planilhas, JSON para integração com aplicações,
+          Escolha CSV ou Excel para usar em planilhas, JSON para integração com aplicações,
           ou JSON API para documentação técnica de integração.
         </p>
       </div>

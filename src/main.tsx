@@ -9,7 +9,7 @@ import { ToastProvider } from "./components/ui/Toast.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <AccessibilityProvider>
         <EstadoProvider>
           <ToastProvider>

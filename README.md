@@ -63,3 +63,11 @@ Cada UF é um `<path>` independente (geometria real via `@svg-maps/brazil`), col
 ## Acessibilidade
 
 Alto contraste e tamanho de fonte ajustável (persistidos em `localStorage`), navegação por teclado no mapa e nos filtros, estados de carregamento/vazio/erro, e uso de ícone + texto em todos os indicadores de status (nunca só cor).
+
+## Uso de Inteligência Artificial
+
+Este projeto foi desenvolvido com apoio de assistentes de IA (Claude, da Anthropic) como
+par de programação ao longo de todo o desenvolvimento — geração e revisão de código,
+componentes de UI, organização dos dados e diagnóstico/correção de bugs. Todas as
+decisões de produto, design e priorização foram definidas e revisadas pela equipe; a
+IA atuou como ferramenta de execução sob orientação humana, nunca de forma autônoma.

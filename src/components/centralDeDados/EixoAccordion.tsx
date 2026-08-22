@@ -1,5 +1,6 @@
 import { NIVEL_SEMAFORO_META } from "../../lib/avaliacaoClimatica";
-import type { EixoAgregado, EixoAvaliacaoClimatica, ComponenteAgregado } from "../../lib/avaliacaoClimatica";
+import type { EixoAgregado, ComponenteAgregado } from "../../lib/avaliacaoClimatica";
+import type { EixoAvaliacaoClimatica } from "../../types";
 import { IconChevronDown, IconChevronRight, IconCoins, IconFileText, IconLandmark, type IconProps } from "../../lib/icons";
 import { ScoreBar } from "./ScoreBar";
 import { EstagioBadge } from "./EstagioBadge";

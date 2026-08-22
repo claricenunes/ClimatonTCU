@@ -60,7 +60,8 @@ const QUESTIONS: CannedQuestion[] = [
   {
     type: "resposta",
     question: "Os dados exibidos são reais?",
-    answer: "Sim. Todos os dados são coletados de https://climatescanner.org/pt/inicio/",
+    answer:
+      "Parcialmente. O diagnóstico da ação climática estadual (Central de Dados) usa dados reais do Painel ClimaBrasil, iniciativa dos Tribunais de Contas do Brasil. Os demais indicadores deste protótipo (municípios, notícias, relatos) são simulados para fins de demonstração.",
   },
   {
     type: "opcoes",
